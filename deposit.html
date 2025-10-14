@@ -131,3 +131,84 @@
             },
             "QRIS": {
                 bankName: "QRIS",
+                accountNumber: "9999900000 (Scan Kode)",
+                accountHolder: "PT SLOT GACOR INDO"
+            }
+        };
+
+        const metodeContainer = document.getElementById('metode-deposit');
+        const selectedMethodInput = document.getElementById('selected-method');
+        const depositForm = document.getElementById('deposit-form');
+        
+        // Elemen display rekening
+        const rekeningDisplay = document.getElementById('rekening-tujuan-display');
+        const bankNameSpan = document.getElementById('deposit-bank-name');
+        const accountNumberSpan = document.getElementById('deposit-account-number');
+        const accountHolderSpan = document.getElementById('deposit-account-holder');
+
+        // 2. FUNGSI UPDATE TAMPILAN REKENING
+        function updateRekeningDisplay(method) {
+            const data = DATA_REKENING_DEPOSIT[method];
+            
+            if (data) {
+                bankNameSpan.textContent = data.bankName;
+                accountNumberSpan.textContent = data.accountNumber;
+                accountHolderSpan.textContent = data.accountHolder;
+                
+                rekeningDisplay.style.display = 'block';
+            } else {
+                rekeningDisplay.style.display = 'none';
+            }
+        }
+
+
+        // 3. EVENT HANDLER KLIK TOMBOL METODE
+        metodeContainer.addEventListener('click', function(event) {
+            const clickedButton = event.target.closest('button');
+
+            if (clickedButton) {
+                // Kelola tampilan tombol 'selected'
+                metodeContainer.querySelectorAll('button').forEach(btn => {
+                    btn.classList.remove('selected');
+                });
+                clickedButton.classList.add('selected');
+                
+                const selectedMethod = clickedButton.dataset.method;
+                selectedMethodInput.value = selectedMethod;
+                
+                // Panggil fungsi utama untuk menampilkan rekening
+                updateRekeningDisplay(selectedMethod);
+            }
+        });
+
+
+        // 4. EVENT HANDLER SUBMIT FORMULIR
+        depositForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            if (!selectedMethodInput.value) {
+                alert('Mohon pilih salah satu Metode Deposit Tujuan.');
+                return;
+            }
+            
+            const jumlah = document.getElementById('jumlah').value;
+            const metode = selectedMethodInput.value;
+            const rekeningTujuan = DATA_REKENING_DEPOSIT[metode].accountNumber; // Ambil rekening dari data
+
+            // ⚠️ Setelah ini, kamu harus mengirim data deposit ini ke Backend!
+            
+            alert(`✅ Permintaan Deposit berhasil dicatat!
+Metode Tujuan: ${metode} 
+Nomor Tujuan: ${rekeningTujuan}
+Jumlah: Rp ${new Intl.NumberFormat('id-ID').format(jumlah)} 
+            
+Silakan segera lakukan transfer ke nomor di atas dan tunggu konfirmasi.`);
+            
+            // SIMULASI: Membersihkan form atau mengalihkan
+            depositForm.reset();
+            updateRekeningDisplay(null);
+            // window.location.href = 'index.html'; 
+        });
+    </script>
+</body>
+    </html>
