@@ -3,17 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aplikasi Bisnis Sederhana</title>
+    <title>Situs Slot Online - Beranda</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
-    <div class="auth-buttons">
-    <a href="register.html" class="btn btn-daftar">DAFTAR</a>
-    <a href="login.html" class="btn btn-login">LOGIN</a>
-    </div>
+    <header class="main-header">
+        <div class="logo">
+            <h1>SLOT<span class="highlight">GACOR</span></h1>
+        </div>
+        
+        <div class="auth-buttons">
+            <a href="register.html" class="btn btn-daftar">DAFTAR</a>
+            <a href="login.html" class="btn btn-login">LOGIN</a>
+        </div>
+        
+        <button class="menu-toggle" aria-label="Toggle Menu"><i class="fas fa-bars"></i></button>
+    </header>
+
     <div id="main-content">
-        <header>
+        <div class="user-header">
             <div class="user-info">
                 <img src="placeholder_avatar.png" alt="Avatar" class="avatar">
                 <span>Username (Contoh: Budi)</span>
@@ -23,14 +33,14 @@
                 <button class="add-balance">+</button>
             </div>
             <div class="header-icons">
-                <button onclick="alert('Ini akan mengalihkan ke halaman Rekening Pribadi')">
+                <button onclick="alert('Mengalihkan ke halaman Rekening Pribadi')">
                     <img src="placeholder_wallet.png" alt="Dompet" class="icon">
                 </button>
-                <button onclick="alert('Menu')">
+                <button onclick="alert('Menu Tambahan')">
                     <img src="placeholder_menu.png" alt="Menu" class="icon">
                 </button>
             </div>
-        </header>
+        </div>
 
         <div class="promo-banner">
             SELAMAT HARI RAYA IDUL FITRI 1446H
@@ -54,20 +64,17 @@
                 <div class="game-label new">New</div>
                 <div class="game-jackpot">JACKPOT<br>587,771,520</div>
             </div>
-
             </div>
 
         <footer>
             <button>Permainan</button>
             <button>Jackpot</button>
-            <button onclick="alert('Ini akan mengalihkan ke halaman Form Deposit')">Setor</button>
+            <button onclick="window.location.href='deposit.html'">Setor</button> 
             <button>Dapatkan</button>
             <button>*Promo</button>
         </footer>
-    <button onclick="window.location.href='deposit.html'">Setor</button> 
-    </footer>
     </div>
-
+    
     <script src="script.js"></script>
 </body>
-                        </html>
+                    </html>
