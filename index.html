@@ -9,6 +9,19 @@
 </head>
 <body>
 
+    <div id="sidebar-menu" class="sidebar-menu">
+        <button class="close-btn">&times;</button>
+        <h3><i class="fas fa-cog"></i> Menu Akun</h3>
+        <ul>
+            <li><a href="#"><i class="fas fa-home"></i> Beranda</a></li>
+            <li><a href="#"><i class="fas fa-user-circle"></i> Profil Saya</a></li>
+            <li><a href="#" onclick="alert('Mengalihkan ke halaman Rekening Pribadi')"><i class="fas fa-wallet"></i> Rekening Pribadi</a></li>
+            <li><a href="#"><i class="fas fa-question-circle"></i> Bantuan & FAQ</a></li>
+            <li class="logout-item"><a href="#"><i class="fas fa-sign-out-alt"></i> Keluar (Logout)</a></li>
+        </ul>
+    </div>
+    <div id="sidebar-overlay" class="sidebar-overlay"></div> 
+    
     <header class="main-header">
         <div class="logo">
             <h1>SLOT<span class="highlight">GACOR</span></h1>
@@ -29,15 +42,15 @@
                 <span>Username (Contoh: Budi)</span>
             </div>
             <div class="balance">
-                <div class="amount">0</div>
-                <button class="add-balance">+</button>
+                <div class="amount">Rp 0</div>
+                <button class="add-balance" onclick="window.location.href='deposit.html'"><i class="fas fa-plus"></i></button>
             </div>
             <div class="header-icons">
                 <button onclick="alert('Mengalihkan ke halaman Rekening Pribadi')">
-                    <img src="placeholder_wallet.png" alt="Dompet" class="icon">
+                    <i class="fas fa-credit-card icon-fa"></i>
                 </button>
-                <button onclick="alert('Menu Tambahan')">
-                    <img src="placeholder_menu.png" alt="Menu" class="icon">
+                <button id="open-sidebar-btn"> 
+                    <i class="fas fa-bars icon-fa"></i>
                 </button>
             </div>
         </div>
@@ -49,32 +62,50 @@
         <div class="game-grid">
             <div class="game-item" onclick="window.open('https://link-pribadi-game1.com', '_blank')">
                 <img src="game_sweet_bonanza.jpg" alt="Sweet Bonanza" class="game-thumb">
-                <div class="game-label hot">Hot</div>
-                <div class="game-jackpot">JACKPOT<br>2,159,337,591</div>
+                <div class="game-overlay">
+                    <span class="game-name">Sweet Bonanza</span>
+                    <a href="#" class="btn-play-game"><i class="fas fa-play"></i> MAIN</a>
+                </div>
+                <div class="game-info">
+                    <div class="game-label hot">HOT</div>
+                    <div class="game-jackpot">J: 2,1 M</div>
+                </div>
             </div>
 
             <div class="game-item" onclick="window.open('https://link-pribadi-game2.com', '_blank')">
                 <img src="game_starlight_princess.jpg" alt="Starlight Princess" class="game-thumb">
-                <div class="game-label hot">Hot</div>
-                <div class="game-jackpot">JACKPOT<br>2,159,337,591</div>
+                <div class="game-overlay">
+                    <span class="game-name">Starlight Princess</span>
+                    <a href="#" class="btn-play-game"><i class="fas fa-play"></i> MAIN</a>
+                </div>
+                <div class="game-info">
+                    <div class="game-label hot">HOT</div>
+                    <div class="game-jackpot">J: 2,1 M</div>
+                </div>
             </div>
 
             <div class="game-item" onclick="window.open('https://link-pribadi-game3.com', '_blank')">
                 <img src="game_snake.jpg" alt="Snake" class="game-thumb">
-                <div class="game-label new">New</div>
-                <div class="game-jackpot">JACKPOT<br>587,771,520</div>
+                <div class="game-overlay">
+                    <span class="game-name">Snake Jackpot</span>
+                    <a href="#" class="btn-play-game"><i class="fas fa-play"></i> MAIN</a>
+                </div>
+                <div class="game-info">
+                    <div class="game-label new">NEW</div>
+                    <div class="game-jackpot">J: 587 Jt</div>
+                </div>
             </div>
             </div>
 
         <footer>
-            <button>Permainan</button>
-            <button>Jackpot</button>
-            <button onclick="window.location.href='deposit.html'">Setor</button> 
-            <button>Dapatkan</button>
-            <button>*Promo</button>
+            <button><i class="fas fa-dice"></i> Permainan</button>
+            <button><i class="fas fa-trophy"></i> Jackpot</button>
+            <button onclick="window.location.href='deposit.html'"><i class="fas fa-exchange-alt"></i> Setor</button> 
+            <button><i class="fas fa-money-bill-wave"></i> Dapatkan</button>
+            <button><i class="fas fa-star"></i> *Promo</button>
         </footer>
     </div>
     
     <script src="script.js"></script>
 </body>
-                    </html>
+    </html>
