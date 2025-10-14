@@ -1,0 +1,181 @@
+/* Reset CSS dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: #1a1a2e; /* Warna latar belakang gelap */
+    color: white;
+    padding-bottom: 60px; /* Ruang untuk footer */
+}
+
+/* --- TOMBOL LOGIN/REGISTER DI ATAS --- */
+.auth-bar {
+    text-align: center;
+    padding: 10px;
+    background-color: #3f3f5a;
+}
+.auth-bar button {
+    background-color: #e6007e;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* --- HEADER UTAMA --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: linear-gradient(to right, #004d99, #00264d); /* Gradien biru gelap */
+    border-bottom: 2px solid #ffcc00; /* Garis kuning untuk pemisah */
+}
+
+.user-info, .header-icons {
+    display: flex;
+    align-items: center;
+}
+
+.avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 5px;
+    border: 2px solid white;
+}
+
+.balance {
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+.balance .amount {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-right: 10px;
+}
+.balance .add-balance {
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.header-icons button {
+    background: none;
+    border: none;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.header-icons .icon {
+    width: 25px;
+    height: 25px;
+}
+
+/* --- BANNER TEMA --- */
+.promo-banner {
+    text-align: center;
+    padding: 15px;
+    background: linear-gradient(to right, #ffcc00, #ff6600); /* Gradien Emas/Oranye */
+    color: #333;
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    /* Efek mirip di screenshot */
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* --- AREA GAME GRID --- */
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 kolom */
+    gap: 10px;
+    padding: 10px;
+}
+
+.game-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.game-item:hover {
+    transform: scale(1.05);
+}
+
+.game-thumb {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.game-label {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.7em;
+    font-weight: bold;
+    color: white;
+}
+.game-label.hot {
+    background-color: red;
+}
+.game-label.new {
+    background-color: green;
+}
+
+.game-jackpot {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #ffcc00;
+    padding: 5px;
+    font-size: 0.65em;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* --- FOOTER/NAVIGASI BAWAH --- */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    background-color: #000;
+    padding: 10px 0;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+
+footer button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 0.8em;
+    cursor: pointer;
+    padding: 5px;
+    flex-grow: 1; /* Agar tombol merata */
+}
