@@ -73,14 +73,7 @@ a {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
-.logo h1 {
-    font-size: 1.8em;
-    color: white;
-}
 
-.logo .highlight {
-    color: var(--primary-color);
-}
 
 /* Sembunyikan menu-toggle di desktop, tampilkan di mobile */
 .menu-toggle {
@@ -107,7 +100,16 @@ a {
     align-items: center;
 }
 
-.avatar {
+..logo h1 {
+    font-size: 1.8em;
+    color: white;
+    /* Tambahkan efek Neon Flicker ke highlight */
+}
+
+.logo .highlight {
+    color: var(--primary-color);
+    animation: neon-flicker 3s infinite alternate; /* Animasi berkedip */
+    }avatar {
     width: 30px;
     height: 30px;
     border-radius: 50%;
