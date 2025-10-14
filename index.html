@@ -3,66 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Belajar Mesin Slot Mini</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 50px;
-        }
-        #slot-machine {
-            border: 2px solid #333;
-            padding: 20px;
-            margin: auto;
-            width: 300px;
-            background-color: #f0f0f0;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-        }
-        .slot-reel {
-            font-size: 24px;
-            margin: 10px;
-        }
-    </style>
+    <title>Aplikasi Bisnis Sederhana</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Belajar Mesin Slot Mini (Untuk Edukasi)</h1>
-    <p>Ini adalah simulasi sederhana. Klik tombol untuk memutar dan lihat hasilnya!</p>
-    <div id="slot-machine">
-        <div id="reel1" class="slot-reel">?</div>
-        <div id="reel2" class="slot-reel">?</div>
-        <div id="reel3" class="slot-reel">?</div>
-        <button onclick="spinReels()">Putar Sekarang!</button>
-        <p id="result">Hasil: Belum diputar</p>
+
+    <div class="auth-bar">
+        <button onclick="window.location.href='login.html'">LOGIN</button>
+        <button onclick="window.location.href='register.html'">REGISTER</button>
     </div>
 
-    <script>
-        const symbols = ['🍒', '🍊', '🍇', '⭐', '🍉'];  // Simbol sederhana untuk gulungan
+    <div id="main-content">
+        <header>
+            <div class="user-info">
+                <img src="placeholder_avatar.png" alt="Avatar" class="avatar">
+                <span>Username (Contoh: Budi)</span>
+            </div>
+            <div class="balance">
+                <div class="amount">0</div>
+                <button class="add-balance">+</button>
+            </div>
+            <div class="header-icons">
+                <button onclick="alert('Ini akan mengalihkan ke halaman Rekening Pribadi')">
+                    <img src="placeholder_wallet.png" alt="Dompet" class="icon">
+                </button>
+                <button onclick="alert('Menu')">
+                    <img src="placeholder_menu.png" alt="Menu" class="icon">
+                </button>
+            </div>
+        </header>
 
-        function spinReels() {
-            const reel1 = document.getElementById('reel1');
-            const reel2 = document.getElementById('reel2');
-            const reel3 = document.getElementById('reel3');
-            const resultElement = document.getElementById('result');
+        <div class="promo-banner">
+            SELAMAT HARI RAYA IDUL FITRI 1446H
+        </div>
 
-            // Generate hasil acak untuk setiap gulungan
-            const result1 = symbols[Math.floor(Math.random() * symbols.length)];
-            const result2 = symbols[Math.floor(Math.random() * symbols.length)];
-            const result3 = symbols[Math.floor(Math.random() * symbols.length)];
+        <div class="game-grid">
+            <div class="game-item" onclick="window.open('https://link-pribadi-game1.com', '_blank')">
+                <img src="game_sweet_bonanza.jpg" alt="Sweet Bonanza" class="game-thumb">
+                <div class="game-label hot">Hot</div>
+                <div class="game-jackpot">JACKPOT<br>2,159,337,591</div>
+            </div>
 
-            reel1.textContent = result1;
-            reel2.textContent = result2;
-            reel3.textContent = result3;
+            <div class="game-item" onclick="window.open('https://link-pribadi-game2.com', '_blank')">
+                <img src="game_starlight_princess.jpg" alt="Starlight Princess" class="game-thumb">
+                <div class="game-label hot">Hot</div>
+                <div class="game-jackpot">JACKPOT<br>2,159,337,591</div>
+            </div>
 
-            // Cek jika menang (semua simbol sama, untuk contoh sederhana)
-            if (result1 === result2 && result2 === result3) {
-                resultElement.textContent = 'Hasil: Anda Menang! 🎉';
-            } else {
-                resultElement.textContent = 'Hasil: Coba Lagi!';
-            }
-        }
-    </script>
+            <div class="game-item" onclick="window.open('https://link-pribadi-game3.com', '_blank')">
+                <img src="game_snake.jpg" alt="Snake" class="game-thumb">
+                <div class="game-label new">New</div>
+                <div class="game-jackpot">JACKPOT<br>587,771,520</div>
+            </div>
+
+            </div>
+
+        <footer>
+            <button>Permainan</button>
+            <button>Jackpot</button>
+            <button onclick="alert('Ini akan mengalihkan ke halaman Form Deposit')">Setor</button>
+            <button>Dapatkan</button>
+            <button>*Promo</button>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
