@@ -148,14 +148,7 @@
                 
                 <div class="input-group">
                     <label>Pilih Metode Deposit Tujuan:</label>
-                    <div class="bank-options" id="metode-deposit">
-                        <button type="button" data-method="DANA"><i class="fas fa-wallet"></i> DANA</button>
-                        <button type="button" data-method="BCA"><i class="fas fa-university"></i> BCA</button>
-                        <button type="button" data-method="GOPAY"><i class="fas fa-credit-card"></i> GOPAY</button>
-                        <button type="button" data-method="OVO"><i class="fas fa-wallet"></i> OVO</button>
-                        <button type="button" data-method="BRI"><i class="fas fa-university"></i> BRI</button>
-                        <button type="button" data-method="QRIS"><i class="fas fa-qrcode"></i> QRIS</button>
-                        <div class="input-group" id="rekening-tujuan-display" style="display: none;">
+                    <div class="input-group" id="rekening-tujuan-display" style="display: none;">
     <label>Transfer ke Rekening Tujuan:</label>
     <div class="rekening-details">
         <p>Nama Bank/E-Wallet: <span id="deposit-bank-name"></span></p>
@@ -164,8 +157,15 @@
     </div>
     <p class="warning-text">⚠️ Mohon transfer hanya ke nomor di atas. Nomor dapat berubah sewaktu-waktu.</p>
                     </div>
-                    <input type="hidden" id="selected-method" name="metode_deposit" required>
-                </div>
+                    <div class="bank-options" id="metode-deposit">
+                        <button type="button" data-method="DANA"><i class="fas fa-wallet"></i> DANA</button>
+                        <button type="button" data-method="BCA"><i class="fas fa-university"></i> BCA</button>
+                        <button type="button" data-method="GOPAY"><i class="fas fa-credit-card"></i> GOPAY</button>
+                        <button type="button" data-method="OVO"><i class="fas fa-wallet"></i> OVO</button>
+                        <button type="button" data-method="BRI"><i class="fas fa-university"></i> BRI</button>
+                        <button type="button" data-method="QRIS"><i class="fas fa-qrcode"></i> QRIS</button>
+                        <div class="input-group" id="rekening-tujuan-display" style="display: none;">
+                   </div>
                 
                 <div class="input-group">
                     <label for="jumlah">Jumlah Deposit (Min. 25.000)</label>
