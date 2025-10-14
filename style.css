@@ -1,4 +1,6 @@
-/* --- 0. RESET DAN VARIABEL WARNA --- */
+/* ======================================================= */
+/* --- 0. RESET, VARIABEL WARNA, DAN KEYFRAMES ANIMASI --- */
+/* ======================================================= */
 * {
     margin: 0;
     padding: 0;
@@ -7,20 +9,6 @@
 }
 
 :root {
-    /* --- KEYFRAMES UNTUK ANIMASI NEON LOGO --- */
-@keyframes neon-flicker {
-    0%, 100% { text-shadow: 0 0 5px var(--primary-color), 0 0 10px var(--primary-color); }
-    50% { text-shadow: none; }
-}
-
-/* --- UTILITY / TOMBOL UMUM DENGAN TRANSISI --- */
-.btn {
-    /* ... (kode yang sudah ada) ... */
-    transition: background-color 0.3s, transform 0.2s; /* Tambah transisi transform */
-}
-.btn:hover {
-    transform: scale(1.05);
-}
     /* Palet Warna */
     --primary-color: #ffcc00; /* Kuning Emas / Aksen utama */
     --secondary-color: #2c3e50; /* Biru Tua / Header utama */
@@ -28,6 +16,12 @@
     --dark-bg: #1e1e2d; /* Latar belakang utama gelap */
     --card-bg: #2c2c42; /* Latar belakang kartu/kotak form */
     --input-bg: #3e3e55; /* Latar belakang input */
+}
+
+/* Animasi Neon Logo */
+@keyframes neon-flicker {
+    0%, 100% { text-shadow: 0 0 5px var(--primary-color), 0 0 10px var(--primary-color); }
+    50% { text-shadow: none; }
 }
 
 body {
@@ -49,7 +43,7 @@ a {
     border-radius: 5px;
     font-weight: bold;
     text-transform: uppercase;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s; 
     text-align: center;
 }
 
@@ -62,8 +56,13 @@ a {
     background-color: var(--accent-color);
     color: white;
 }
+.btn-login:hover, .btn-daftar:hover {
+    transform: scale(1.05); /* Efek yang kamu tambahkan */
+}
 
-/* --- 1. HEADER UTAMA (index.html) --- */
+/* ======================================================= */
+/* --- 1. HEADER DAN NAVIGASI ATAS --- */
+/* ======================================================= */
 .main-header {
     background-color: var(--secondary-color);
     padding: 15px 20px;
@@ -73,7 +72,15 @@ a {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
+.logo h1 {
+    font-size: 1.8em;
+    color: white;
+}
 
+.logo .highlight {
+    color: var(--primary-color);
+    animation: neon-flicker 3s infinite alternate; /* Animasi Neon Logo */
+}
 
 /* Sembunyikan menu-toggle di desktop, tampilkan di mobile */
 .menu-toggle {
@@ -85,7 +92,7 @@ a {
     display: none; 
 }
 
-/* --- 2. USER HEADER (Info Saldo dan Rekening) --- */
+/* --- USER HEADER (Info Saldo dan Rekening) --- */
 .user-header {
     display: flex;
     justify-content: space-between;
@@ -100,16 +107,7 @@ a {
     align-items: center;
 }
 
-..logo h1 {
-    font-size: 1.8em;
-    color: white;
-    /* Tambahkan efek Neon Flicker ke highlight */
-}
-
-.logo .highlight {
-    color: var(--primary-color);
-    animation: neon-flicker 3s infinite alternate; /* Animasi berkedip */
-    }avatar {
+.avatar {
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -128,7 +126,7 @@ a {
     border-radius: 20px;
 }
 .balance .amount {
-    font-size: 1em; /* Dikecilkan sedikit */
+    font-size: 1em; 
     font-weight: bold;
     margin-right: 10px;
 }
@@ -154,7 +152,7 @@ a {
     color: white;
 }
 
-/* --- 3. PROMO BANNER --- */
+/* --- PROMO BANNER --- */
 .promo-banner {
     text-align: center;
     padding: 15px;
@@ -167,7 +165,9 @@ a {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
-/* --- 4. GAME GRID (Styling Keren) --- */
+/* ======================================================= */
+/* --- 2. GAME GRID DAN ANIMASI KARTU --- */
+/* ======================================================= */
 .game-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr); 
@@ -181,13 +181,15 @@ a {
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
     cursor: pointer;
-    transition: transform 0.3s;
-    /* Mengatur rasio agar kartu terlihat bagus */
+    /* Transisi untuk efek 3D dan Neon */
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; 
     padding-bottom: 120%; 
 }
 
 .game-item:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px) rotateZ(1deg); /* Efek naik dan berputar sedikit */
+    /* Bayangan seperti neon di sekitar kartu saat hover */
+    box-shadow: 0 8px 25px rgba(255, 204, 0, 0.5), 0 0 15px rgba(255, 204, 0, 0.4); 
 }
 
 .game-thumb {
@@ -270,8 +272,11 @@ a {
     color: var(--primary-color);
 }
 
+/* ======================================================= */
+/* --- 3. FOOTER DAN SIDEBAR MENU --- */
+/* ======================================================= */
 
-/* --- 5. FOOTER/NAVIGASI BAWAH --- */
+/* --- FOOTER/NAVIGASI BAWAH --- */
 footer {
     position: fixed;
     bottom: 0;
@@ -296,14 +301,21 @@ footer button {
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: color 0.3s, transform 0.1s; /* Efek tekan tombol */
 }
 footer button i {
     font-size: 1.3em;
     margin-bottom: 3px;
 }
+footer button:hover {
+    color: var(--primary-color);
+}
+footer button:active {
+    transform: scale(0.95);
+}
 
-/* --- 6. SIDEBAR MENU STYLING --- */
 
+/* --- SIDEBAR MENU STYLING --- */
 .sidebar-menu {
     height: 100%;
     width: 0; 
@@ -373,53 +385,9 @@ footer button i {
     display: none; 
 }
 
-/* --- 7. RESPONSIVITAS (Mobile) --- */
-@media (max-width: 768px) {
-    /* Header Mobile */
-    .main-header {
-        padding: 10px 15px;
-    }
-
-    .auth-buttons {
-        /* PENTING: Tampilkan di sini jika belum login */
-        display: flex;
-        gap: 8px;
-    }
-    .main-header .btn {
-        padding: 5px 10px;
-        font-size: 0.8em;
-    }
-    
-    /* User Header (Info Saldo) Mobile */
-    .user-header {
-        padding: 8px 10px;
-        flex-wrap: wrap;
-    }
-    .user-info, .header-icons {
-        margin: 5px 0;
-    }
-    .balance {
-        order: 3;
-        width: 100%;
-        justify-content: space-around;
-        margin-top: 10px;
-    }
-    
-    /* Game Grid Mobile */
-    .game-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 kolom di mobile */
-        gap: 10px;
-        padding: 10px;
-    }
-    
-    /* Footer Mobile */
-    footer button {
-        font-size: 0.6em;
-    }
-}
-/* ======================================= */
-/* --- 8. FORM STYLING (Untuk deposit.html, register.html, login.html) --- */
-/* ======================================= */
+/* ======================================================= */
+/* --- 4. FORM STYLING (Deposit, Register, Login) --- */
+/* ======================================================= */
 
 .form-page {
     display: flex;
@@ -427,7 +395,7 @@ footer button i {
     align-items: center;
     min-height: 100vh;
     padding: 20px;
-    background-color: var(--dark-bg); /* Pastikan latar belakang gelap */
+    background-color: var(--dark-bg);
 }
 
 .form-box {
@@ -464,7 +432,7 @@ footer button i {
     padding: 12px;
     border: none;
     border-radius: 5px;
-    background-color: var(--input-bg); /* Menggunakan variabel */
+    background-color: var(--input-bg);
     color: white;
     font-size: 1em;
     outline: none;
@@ -476,10 +444,10 @@ footer button i {
     border: 2px solid var(--primary-color);
 }
 
-/* Styling Pilihan Metode Deposit (Grid) */
+/* --- Pilihan Metode Deposit (Bank Options) --- */
 .bank-options {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 kolom di desktop */
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
     margin-top: 10px;
 }
@@ -496,10 +464,9 @@ footer button i {
     transition: all 0.2s;
 }
 
-/* KELAS PENTING: Untuk tombol yang dipilih */
 .bank-options button.selected {
-    border-color: var(--primary-color); /* Garis batas kuning */
-    background-color: #4a4a60; /* Warna latar belakang sedikit berbeda */
+    border-color: var(--primary-color);
+    background-color: #4a4a60;
     box-shadow: 0 0 5px var(--primary-color);
 }
 
@@ -536,11 +503,10 @@ footer button i {
     font-weight: bold;
 }
 
-
-/* --- 9. STYLING REKENING TUJUAN DEPOSIT (Tambahan Wajib) --- */
+/* --- STYLING REKENING TUJUAN DEPOSIT --- */
 
 .rekening-details {
-    background-color: #4a4a60; /* Warna sedikit berbeda dari card-bg */
+    background-color: #4a4a60; 
     padding: 15px;
     border-radius: 5px;
     margin-bottom: 10px;
@@ -556,13 +522,58 @@ footer button i {
 }
 .warning-text {
     font-size: 0.8em;
-    color: var(--accent-color); /* Merah */
+    color: var(--accent-color);
     text-align: center;
     margin-top: 10px;
 }
 
-/* Responsif untuk Bank Options */
-@media (max-width: 600px) {
+
+/* ======================================================= */
+/* --- 5. RESPONSIVITAS (Mobile) --- */
+/* ======================================================= */
+@media (max-width: 768px) {
+    /* Header Mobile */
+    .main-header {
+        padding: 10px 15px;
+    }
+
+    .auth-buttons {
+        display: flex;
+        gap: 8px;
+    }
+    .main-header .btn {
+        padding: 5px 10px;
+        font-size: 0.8em;
+    }
+    
+    /* User Header (Info Saldo) Mobile */
+    .user-header {
+        padding: 8px 10px;
+        flex-wrap: wrap;
+    }
+    .user-info, .header-icons {
+        margin: 5px 0;
+    }
+    .balance {
+        order: 3;
+        width: 100%;
+        justify-content: space-around;
+        margin-top: 10px;
+    }
+    
+    /* Game Grid Mobile */
+    .game-grid {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 10px;
+        padding: 10px;
+    }
+    
+    /* Footer Mobile */
+    footer button {
+        font-size: 0.6em;
+    }
+    
+    /* Form Mobile */
     .bank-options {
         grid-template-columns: repeat(2, 1fr); /* 2 kolom di mobile */
     }
