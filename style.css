@@ -7,6 +7,20 @@
 }
 
 :root {
+    /* --- KEYFRAMES UNTUK ANIMASI NEON LOGO --- */
+@keyframes neon-flicker {
+    0%, 100% { text-shadow: 0 0 5px var(--primary-color), 0 0 10px var(--primary-color); }
+    50% { text-shadow: none; }
+}
+
+/* --- UTILITY / TOMBOL UMUM DENGAN TRANSISI --- */
+.btn {
+    /* ... (kode yang sudah ada) ... */
+    transition: background-color 0.3s, transform 0.2s; /* Tambah transisi transform */
+}
+.btn:hover {
+    transform: scale(1.05);
+}
     /* Palet Warna */
     --primary-color: #ffcc00; /* Kuning Emas / Aksen utama */
     --secondary-color: #2c3e50; /* Biru Tua / Header utama */
