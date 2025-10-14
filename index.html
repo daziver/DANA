@@ -3,70 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aplikasi Bisnis Sederhana</title>
+    <title>Situs Slot Online Terbaik - Beranda</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
-    <div class="auth-bar">
-        <button onclick="window.location.href='login.html'">LOGIN</button>
-        <button onclick="window.location.href='register.html'">REGISTER</button>
-    </div>
-
-    <div id="main-content">
-        <header>
-            <div class="user-info">
-                <img src="placeholder_avatar.png" alt="Avatar" class="avatar">
-                <span>Username (Contoh: Budi)</span>
-            </div>
-            <div class="balance">
-                <div class="amount">0</div>
-                <button class="add-balance">+</button>
-            </div>
-            <div class="header-icons">
-                <button onclick="alert('Ini akan mengalihkan ke halaman Rekening Pribadi')">
-                    <img src="placeholder_wallet.png" alt="Dompet" class="icon">
-                </button>
-                <button onclick="alert('Menu')">
-                    <img src="placeholder_menu.png" alt="Menu" class="icon">
-                </button>
-            </div>
-        </header>
-
-        <div class="promo-banner">
-            SELAMAT HARI RAYA IDUL FITRI 1446H
+    <header class="main-header">
+        <div class="logo">
+            <h1>SLOT<span class="highlight">GACOR</span></h1>
+        </div>
+        
+        <nav class="desktop-nav">
+            <ul>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">GAMES</a></li>
+                <li><a href="#">PROMO</a></li>
+            </ul>
+        </nav>
+        
+        <div class="auth-buttons">
+            <a href="#" class="btn btn-daftar">DAFTAR</a>
+            <a href="#" class="btn btn-login">LOGIN</a>
         </div>
 
-        <div class="game-grid">
-            <div class="game-item" onclick="window.open('https://link-pribadi-game1.com', '_blank')">
-                <img src="game_sweet_bonanza.jpg" alt="Sweet Bonanza" class="game-thumb">
-                <div class="game-label hot">Hot</div>
-                <div class="game-jackpot">JACKPOT<br>2,159,337,591</div>
+        <button class="menu-toggle" aria-label="Toggle Menu"><i class="fas fa-bars"></i></button>
+    </header>
+
+    <section class="hero-banner">
+        <div class="banner-content">
+            <h2>JACKPOT HARI INI</h2>
+            <p>Jutaan Rupiah Menanti! Bergabunglah Sekarang dan Menangkan Hadiah Besar!</p>
+            <a href="#" class="btn btn-main-action">AJAKAN BERMAIN SEKARANG!</a>
+        </div>
+    </section>
+
+    <section class="game-list-section">
+        <h3><i class="fas fa-gamepad"></i> Game Slot Populer</h3>
+        
+        <div class="game-carousel">
+            <div class="game-card">
+                <img src="game_sweet_bonanza.jpg" alt="Sweet Bonanza" class="game-image">
+                <p class="game-name">Sweet Bonanza</p>
+                <a href="#" class="btn btn-play">Mainkan <i class="fas fa-arrow-right"></i></a>
             </div>
 
-            <div class="game-item" onclick="window.open('https://link-pribadi-game2.com', '_blank')">
-                <img src="game_starlight_princess.jpg" alt="Starlight Princess" class="game-thumb">
-                <div class="game-label hot">Hot</div>
-                <div class="game-jackpot">JACKPOT<br>2,159,337,591</div>
+            <div class="game-card">
+                <img src="game_starlight_princess.jpg" alt="Starlight Princess" class="game-image">
+                <p class="game-name">Starlight Princess</p>
+                <a href="#" class="btn btn-play">Mainkan <i class="fas fa-arrow-right"></i></a>
             </div>
 
-            <div class="game-item" onclick="window.open('https://link-pribadi-game3.com', '_blank')">
-                <img src="game_snake.jpg" alt="Snake" class="game-thumb">
-                <div class="game-label new">New</div>
-                <div class="game-jackpot">JACKPOT<br>587,771,520</div>
+            <div class="game-card">
+                <img src="game_gates_of_olympus.jpg" alt="Gates of Olympus" class="game-image">
+                <p class="game-name">Gates of Olympus</p>
+                <a href="#" class="btn btn-play">Mainkan <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="game-card">
+                <img src="game_wild_west_gold.jpg" alt="Wild West Gold" class="game-image">
+                <p class="game-name">Wild West Gold</p>
+                <a href="#" class="btn btn-play">Mainkan <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="game-card">
+                <img src="game_aztec_gems.jpg" alt="Aztec Gems" class="game-image">
+                <p class="game-name">Aztec Gems</p>
+                <a href="#" class="btn btn-play">Mainkan <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="game-card">
+                <img src="game_mahjong_ways.jpg" alt="Mahjong Ways" class="game-image">
+                <p class="game-name">Mahjong Ways</p>
+                <a href="#" class="btn btn-play">Mainkan <i class="fas fa-arrow-right"></i></a>
             </div>
 
-            </div>
+        </div>
+    </section>
 
-        <footer>
-            <button>Permainan</button>
-            <button>Jackpot</button>
-            <button onclick="alert('Ini akan mengalihkan ke halaman Form Deposit')">Setor</button>
-            <button>Dapatkan</button>
-            <button>*Promo</button>
-        </footer>
-    </div>
-
-    <script src="script.js"></script>
 </body>
-</html>
+    </html>
