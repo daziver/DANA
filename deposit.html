@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Deposit</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* Menggunakan styling form-page dan form-box dari register.html/login.html */
+        .form-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: var(--dark-bg);
+            padding: 20px;
+        }
+
+        .form-box {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .form-box h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1em;
+            font-weight: bold;
+        }
+
+        /* Styling untuk Input Text/Number dan Select */
+        .input-group input,
+        .input-group select {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3e3e55;
+            color: white;
+            font-size: 1em;
+            outline: none;
+            transition: border-color 0.3s;
+            /* Styling khusus untuk SELECT agar terlihat bagus */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="white"><polygon points="0,0 10,0 5,10"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px top 50%;
+            padding-right: 30px;
+        }
+
+        .input-group input:focus,
+        .input-group select:focus {
+            border: 2px solid var(--primary-color);
+        }
+
+        /* Styling Pilihan Metode Deposit (Grid/Flexbox untuk Ikon) */
+        .bank-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 kolom di desktop */
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .bank-options button {
+            background-color: #555;
+            color: white;
+            padding: 10px 5px;
+            border: 2px solid transparent;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8em;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+
+        .bank-options button.selected {
+            border-color: var(--primary-color);
+            background-color: #4a4a60;
+        }
+
+        .bank-options button:hover {
+            opacity: 0.8;
+        }
+        
+        /* Contoh Ikon Placeholder (Gantilah dengan logo bank sungguhan) */
+        .bank-options i {
+            display: block;
+            font-size: 1.5em;
+            margin-bottom: 5px;
+        }
+
+        /* Tombol Submit */
+        .btn-submit {
+            width: 100%;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #c0392b;
+        }
+
+        .link-text a {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Responsif untuk Bank Options */
+        @media (max-width: 600px) {
+            .bank-options {
+                grid-template-columns: repeat(2, 1fr); /* 2 kolom di mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-page">
+        <div class="form-box">
+            <h2>Formulir Deposit</h2>
+            <form id="deposit-form">
+                
+                <div class="input-group">
+                    <label>Pilih Metode Deposit Tujuan:</label>
+                    <div class="bank-options" id="metode-deposit">
+                        <button type="button" data-method="DANA"><i class="fas fa-wallet"></i> DANA</button>
+                        <button type="button" data-method="BCA"><i class="fas fa-university"></i> BCA</button>
+                        <button type="button" data-method="GOPAY"><i class="fas fa-credit-card"></i> GOPAY</button>
+                        <button type="button" data-method="OVO"><i class="fas fa-wallet"></i> OVO</button>
+                        <button type="button" data-method="BRI"><i class="fas fa-university"></i> BRI</button>
+                        <button type="button" data-method="QRIS"><i class="fas fa-qrcode"></i> QRIS</button>
+                    </div>
+                    <input type="hidden" id="selected-method" name="metode_deposit" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="jumlah">Jumlah Deposit (Min. 25.000)</label>
+                    <input type="number" id="jumlah" name="jumlah_deposit" placeholder="Masukkan Jumlah Deposit" min="25000" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="rekening-pengirim">Nomor Rekening Pengirim (Opsional)</label>
+                    <input type="text" id="rekening-pengirim" name="rekening_pengirim" placeholder="Cth: 0812xxxxxx (jika E-Wallet) atau 1234xxxxxx">
+                </div>
+                
+                <button type="submit" class="btn-submit">KIRIM DEPOSIT</button>
+            </form>
+            
+            <div class="link-text">
+                <a href="index.html">Kembali ke Beranda</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Logika JavaScript untuk memilih metode deposit dan memproses form
+        
+        const metodeContainer = document.getElementById('metode-deposit');
+        const selectedMethodInput = document.getElementById('selected-method');
+        const depositForm = document.getElementById('deposit-form');
+
+        // Fungsi untuk menangani klik tombol metode
+        metodeContainer.addEventListener('click', function(event) {
+            if (event.target.closest('button')) {
+                const clickedButton = event.target.closest('button');
+                
+                // Hapus kelas 'selected' dari semua tombol
+                metodeContainer.querySelectorAll('button').forEach(btn => {
+                    btn.classList.remove('selected');
+                });
+
+                // Tambahkan kelas 'selected' ke tombol yang diklik
+                clickedButton.classList.add('selected');
+                
+                // Simpan nilai metode yang dipilih ke hidden input
+                selectedMethodInput.value = clickedButton.dataset.method;
+            }
+        });
+
+        // Fungsi untuk menangani submit formulir
+        depositForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Pastikan metode deposit sudah dipilih
+            if (!selectedMethodInput.value) {
+                alert('Mohon pilih salah satu Metode Deposit Tujuan.');
+                return;
+            }
+            
+            const jumlah = document.getElementById('jumlah').value;
+            const metode = selectedMethodInput.value;
+
+            // SIMULASI PROSES DEPOSIT
+            alert(`Permintaan Deposit berhasil dikirim! \nMetode: ${metode} \nJumlah: Rp ${new Intl.NumberFormat('id-ID').format(jumlah)} \n\nSetelah ini, kamu akan diarahkan ke halaman petunjuk transfer.`);
+            
+            // Setelah ini, secara nyata kamu akan mengirim data ini ke server (backend)
+
+            // SIMULASI Pengalihan setelah berhasil
+            window.location.href = 'index.html'; 
+        });
+    </script>
+</body>
+  </html>
