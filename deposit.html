@@ -155,6 +155,14 @@
                         <button type="button" data-method="OVO"><i class="fas fa-wallet"></i> OVO</button>
                         <button type="button" data-method="BRI"><i class="fas fa-university"></i> BRI</button>
                         <button type="button" data-method="QRIS"><i class="fas fa-qrcode"></i> QRIS</button>
+                        <div class="input-group" id="rekening-tujuan-display" style="display: none;">
+    <label>Transfer ke Rekening Tujuan:</label>
+    <div class="rekening-details">
+        <p>Nama Bank/E-Wallet: <span id="deposit-bank-name"></span></p>
+        <p>Nomor Rekening: <span id="deposit-account-number"></span></p>
+        <p>Atas Nama: <span id="deposit-account-holder"></span></p>
+    </div>
+    <p class="warning-text">⚠️ Mohon transfer hanya ke nomor di atas. Nomor dapat berubah sewaktu-waktu.</p>
                     </div>
                     <input type="hidden" id="selected-method" name="metode_deposit" required>
                 </div>
