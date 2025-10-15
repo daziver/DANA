@@ -1,12 +1,7 @@
 /* ======================================================= */
 /* --- 0. RESET, VARIABEL WARNA, DAN KEYFRAMES ANIMASI --- */
 /* ======================================================= */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-}
+/* ... (kode reset lainnya) ... */
 
 :root {
     /* Palet Warna */
@@ -23,16 +18,16 @@
 @keyframes neon-flicker {
     0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
         text-shadow: 
-            0 0 4px var(--neon-glow-color), 
-            0 0 11px var(--neon-glow-color), 
-            0 0 19px var(--neon-glow-color), 
-            0 0 40px var(--primary-color), 
-            0 0 80px var(--primary-color);
-        color: white; 
+            0 0 4px var(--neon-glow-color),     /* Cahaya paling terang, blur kecil */
+            0 0 11px var(--neon-glow-color),    /* Cahaya terang, blur sedang */
+            0 0 19px var(--neon-glow-color),    /* Cahaya lebih lebar, blur besar */
+            0 0 40px var(--primary-color),      /* Bayangan paling lebar, warna primary */
+            0 0 80px var(--primary-color);      /* Bayangan sangat lebar, warna primary */
+        color: white; /* Warna teks saat menyala */
     }
     20%, 24%, 55% {        
         text-shadow: none; 
-        color: #555; 
+        color: #555; /* Warna teks saat redup */
     }
 }
 
