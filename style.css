@@ -79,7 +79,7 @@ a {
 
 .logo .highlight {
     color: var(--primary-color);
-    animation: neon-flicker 3s infinite alternate; /* Animasi Neon Logo */
+    animation: neon-flicker 10s infinite alternate; /* Animasi Neon Logo */
 }
 
 /* Sembunyikan menu-toggle di desktop, tampilkan di mobile */
