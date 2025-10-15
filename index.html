@@ -3,38 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Situs Slot Online - Beranda</title>
+    <title>Situs Slot Online - BADAK CULA 1</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
-    <div id="sidebar-menu" class="sidebar-menu">
-        <button class="close-btn">&times;</button>
-        <div id="sidebar-menu" class="sidebar-menu">
-    <button class="close-btn">&times;</button>
+    <div id="sidebar-overlay" class="sidebar-overlay"></div> 
     
-    <div class="sidebar-auth-buttons">
-        <div id="sidebar-overlay" class="sidebar-overlay"></div> 
-        <a href="register.html" class="btn btn-daftar">Daftar</a>
-        <a href="login.html" class="btn btn-login">Login</a>
+    <div id="sidebar-menu" class="sidebar-menu">
+        <button class="close-btn" id="close-sidebar-btn">&times;</button>
+        
+        <div class="sidebar-auth-buttons">
+            <a href="register.html" class="btn btn-daftar">Daftar</a>
+            <a href="login.html" class="btn btn-login">Login</a>
+        </div>
+        
         <h3><i class="fas fa-cog"></i> Menu Akun</h3>
-        <div id="sidebar-menu" class="sidebar-menu">
-    <button class="close-btn">&times;</button>
+        
         <ul>
-            <li><a href="#"><i class="fas fa-home"></i> Beranda</a></li>
+            <li><a href="index.html"><i class="fas fa-home"></i> Beranda</a></li>
             <li><a href="#"><i class="fas fa-user-circle"></i> Profil Saya</a></li>
             <li><a href="#" onclick="alert('Mengalihkan ke halaman Rekening Pribadi')"><i class="fas fa-wallet"></i> Rekening Pribadi</a></li>
             <li><a href="#"><i class="fas fa-question-circle"></i> Bantuan & FAQ</a></li>
-            <li class="logout-item"><a href="#"><i class="fas fa-sign-out-alt"></i> Keluar (Logout)</a></li>
+            <li class="logout-item" style="margin-top: 20px;"><a href="#" onclick="alert('Anda telah keluar.')"><i class="fas fa-sign-out-alt"></i> Keluar (Logout)</a></li>
         </ul>
     </div>    
+
     <header class="main-header">
         <div class="logo">
             <h1>BADAK CULA<span class="highlight">1</span></h1>
         </div>        
-        <button class="menu-toggle" aria-label="Toggle Menu"><i class="fas fa-bars"></i></button>
-    </header>
+        </header>
 
     <div id="main-content">
         <div class="user-header">
@@ -61,6 +61,7 @@
         </div>
 
         <div class="game-grid">
+            
             <div class="game-item" onclick="window.open('https://5xtug3petd.keujxjzjan.net/gs2c/html5Game.do?jackpotid=0&gname=Starlight%20Princess%201000&extGame=1&ext=0&cb_target=exist_tab&symbol=vs20starlightx&jurisdictionID=99&minilobby=false&mgckey=AUTHTOKEN@c3a0c2340af53ca63bb4b838544fe8c6dc3b62a8025c87aebf529b21332c6e67~stylename@idn2_idntotob2b24~SESSION@792bc861-93be-45e3-927d-ac573de162a0~SN@aa78c92d&tabName=', '_blank')">
                 <img src="game_sweet_bonanza.jpg" alt="Sweet Bonanza" class="game-thumb">
                 <div class="game-overlay">
@@ -96,18 +97,36 @@
                     <div class="game-jackpot">J: 587 Jt</div>
                 </div>
             </div>
+            
             </div>
-
-       <footer>
-    <button onclick="window.location.href='games.html'"><i class="fas fa-dice"></i> Permainan</button>
-            <button><i class="fas fa-trophy"></i> Jackpot</button>
-            <button onclick="window.location.href='deposit.html'"><i class="fas fa-exchange-alt"></i>Deposit</button> 
-            <button><i class="fas fa-money-bill-wave"></i> Dapatkan</button>
-            <button><i class="fas fa-star"></i> *Promo</button>
-        </footer>
         
-    </div>
+    </div> <footer>
+        <button onclick="window.location.href='games.html'"><i class="fas fa-dice"></i> Permainan</button>
+        <button><i class="fas fa-trophy"></i> Jackpot</button>
+        <button onclick="window.location.href='deposit.html'"><i class="fas fa-exchange-alt"></i> Deposit</button> 
+        <button><i class="fas fa-money-bill-wave"></i> Dapatkan</button>
+        <button><i class="fas fa-star"></i> *Promo</button>
+    </footer>
     
-    <script src="script.js"></script>
+    <script>
+        const sidebar = document.getElementById('sidebar-menu');
+        const openBtn = document.getElementById('open-sidebar-btn');
+        const closeBtn = document.getElementById('close-sidebar-btn');
+        const overlay = document.getElementById('sidebar-overlay');
+
+        function openSidebar() {
+            sidebar.classList.add('open');
+            overlay.style.display = 'block';
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('open');
+            overlay.style.display = 'none';
+        }
+
+        openBtn.addEventListener('click', openSidebar);
+        closeBtn.addEventListener('click', closeSidebar);
+        overlay.addEventListener('click', closeSidebar); // Tutup saat klik di luar
+    </script>
 </body>
-    </html>
+                                                                                                                    </html>
