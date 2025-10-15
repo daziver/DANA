@@ -1,7 +1,12 @@
 /* ======================================================= */
 /* --- 0. RESET, VARIABEL WARNA, DAN KEYFRAMES ANIMASI --- */
 /* ======================================================= */
-/* ... (kode reset lainnya) ... */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
 
 :root {
     /* Palet Warna */
@@ -18,16 +23,16 @@
 @keyframes neon-flicker {
     0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
         text-shadow: 
-            0 0 4px var(--neon-glow-color),     /* Cahaya paling terang, blur kecil */
-            0 0 11px var(--neon-glow-color),    /* Cahaya terang, blur sedang */
-            0 0 19px var(--neon-glow-color),    /* Cahaya lebih lebar, blur besar */
-            0 0 40px var(--primary-color),      /* Bayangan paling lebar, warna primary */
-            0 0 80px var(--primary-color);      /* Bayangan sangat lebar, warna primary */
-        color: white; /* Warna teks saat menyala */
+            0 0 4px var(--neon-glow-color),
+            0 0 11px var(--neon-glow-color),
+            0 0 19px var(--neon-glow-color),
+            0 0 40px var(--primary-color),
+            0 0 80px var(--primary-color);
+        color: white; 
     }
     20%, 24%, 55% {        
         text-shadow: none; 
-        color: #555; /* Warna teks saat redup */
+        color: #555; 
     }
 }
 
@@ -47,7 +52,7 @@ body {
     background-color: var(--dark-bg);
     color: white;
     line-height: 1.6;
-    padding-bottom: 60px; /* Ruang untuk footer fixed */
+    padding-bottom: 60px; 
 }
 
 a {
@@ -94,15 +99,14 @@ a {
 .logo h1 {
     font-size: 1.8em;
     color: white;
-    text-shadow: 1px 1px 2px #000; /* Bayangan dasar untuk ketebalan */
+    text-shadow: 1px 1px 2px #000;
 }
 
 .logo .highlight {
     color: var(--primary-color);
-    animation: neon-flicker 3s infinite alternate; /* Dibuat 3s agar lebih dinamis */
+    animation: neon-flicker 3s infinite alternate;
 }
 
-/* Sembunyikan menu-toggle di desktop, tampilkan di mobile */
 .menu-toggle {
     background: none;
     border: none;
@@ -193,94 +197,6 @@ a {
         slide-left 15s linear infinite, 
         quick-flicker 0.2s ease-in-out infinite alternate;
 }
-/* ======================================================= */
-/* --- 6. PROMO LIST PAGE STYLING (promo.html) --- */
-/* ======================================================= */
-
-.promo-list-container {
-    padding: 15px;
-}
-
-.promo-list-container h2 {
-    color: var(--primary-color);
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 1.5em;
-    text-transform: uppercase;
-}
-
-.promo-item {
-    position: relative;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s;
-}
-
-.promo-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 15px rgba(255, 204, 0, 0.3);
-}
-
-.promo-img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.promo-action {
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 100%;
-    width: 150px; /* Lebar untuk tombol dan label */
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-}
-
-.promo-label {
-    writing-mode: vertical-rl; /* Tulisan vertikal */
-    transform: rotate(180deg); 
-    text-transform: uppercase;
-    font-size: 0.8em;
-    font-weight: bold;
-    color: white;
-    padding-top: 10px; /* Jarak dari atas */
-    letter-spacing: 2px;
-}
-
-.btn-more-info {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-    border: none;
-    padding: 8px 10px;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 0.9em;
-    width: 90%;
-    margin-bottom: 10px;
-    transition: background-color 0.3s;
-}
-
-.btn-more-info:hover {
-    background-color: #ffd740;
-}
-
-/* Responsivitas untuk tombol action di mobile */
-@media (max-width: 600px) {
-    .promo-action {
-        width: 100px; /* Dikecilkan di layar sempit */
-    }
-    .promo-label {
-        font-size: 0.7em;
-        letter-spacing: 1px;
-    }
 
 /* ======================================================= */
 /* --- 2. GAME GRID DAN ANIMASI KARTU --- */
@@ -659,7 +575,6 @@ footer button:active {
     margin-top: 10px;
 }
 
-
 /* ======================================================= */
 /* --- 5. RESPONSIVITAS (Mobile) --- */
 /* ======================================================= */
@@ -707,6 +622,97 @@ footer button:active {
     
     /* Form Mobile */
     .bank-options {
-        grid-template-columns: repeat(2, 1fr); /* 2 kolom di mobile */
+        grid-template-columns: repeat(2, 1fr); 
+    }
+} /* <--- Penutup media query @media (max-width: 768px) yang benar */
+
+
+/* ======================================================= */
+/* --- 6. PROMO LIST PAGE STYLING (promo.html) --- */
+/* ======================================================= */
+
+.promo-list-container {
+    padding: 15px;
+}
+
+.promo-list-container h2 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    text-transform: uppercase;
+}
+
+.promo-item {
+    position: relative;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s;
+}
+
+.promo-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(255, 204, 0, 0.3);
+}
+
+.promo-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.promo-action {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 150px; 
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.promo-label {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg); 
+    text-transform: uppercase;
+    font-size: 0.8em;
+    font-weight: bold;
+    color: white;
+    padding-top: 10px; 
+    letter-spacing: 2px;
+}
+
+.btn-more-info {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+    padding: 8px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.9em;
+    width: 90%;
+    margin-bottom: 10px;
+    transition: background-color 0.3s;
+}
+
+.btn-more-info:hover {
+    background-color: #ffd740;
+}
+
+/* Responsivitas untuk tombol action di mobile */
+@media (max-width: 600px) {
+    .promo-action {
+        width: 100px; 
+    }
+    .promo-label {
+        font-size: 0.7em;
+        letter-spacing: 1px;
     }
     }
