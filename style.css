@@ -4,9 +4,14 @@
 /* ... (kode reset lainnya) ... */
 
 :root {
-    /* ... (variabel lain tetap) ... */
-    --primary-color: #00b0ff; /* Biru terang untuk bayangan luar */
-    --neon-glow-color: #80d8ff; /* Biru lebih terang untuk inti cahaya */
+    /* Palet Warna */
+    --primary-color: #ffcc00; /* Kuning Emas / Aksen utama */
+    --secondary-color: #2c3e50; /* Biru Tua / Header utama */
+    --accent-color: #e74c3c; /* Merah / Tombol aksi */
+    --dark-bg: #1e1e2d; /* Latar belakang utama gelap */
+    --card-bg: #2c2c42; /* Latar belakang kartu/kotak form */
+    --input-bg: #3e3e55; /* Latar belakang input */
+    --neon-glow-color: #ffe568; /* Warna neon lebih terang */
 }
 
 /* --- Animasi Neon Logo (Efek berkedip kuat) --- */
