@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // --- Seleksi Tampilan Aplikasi ---
     const userDisplay = document.getElementById('user-display');
+    const balanceDisplay = document.getElementById('balance-display'); // <-- BARU
     const navButtons = document.querySelectorAll('.nav-button'); // Navigasi utama (Games, Deposit, Withdraw)
     const contentSections = document.querySelectorAll('.content-section');
     const headerNavButtons = document.querySelectorAll('.header-nav-button'); // Tombol baru di header
@@ -53,14 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Fungsi untuk "Login"
-    function login(username) {
-        loggedInUser = username;
-        localStorage.setItem('simulatedUser', username); // Simpan "sesi"
-        userDisplay.textContent = username; // Tampilkan nama di header
-        showPage('app-page'); // Tampilkan halaman aplikasi
-        showAppContent('games-content'); // Tampilkan konten game sebagai default
-    }
+    
 
     // --- Logika Halaman Awal ---
     if (loggedInUser) {
@@ -83,7 +77,15 @@ document.addEventListener('DOMContentLoaded', () => {
         login(username);
     });
 
-    // 2. Login
+    // 2. // Fungsi untuk "Login"
+    function login(username) {
+        loggedInUser = username;
+        localStorage.setItem('simulatedUser', username); // Simpan "sesi"
+        userDisplay.textContent = username; // Tampilkan nama di header
+        balanceDisplay.textContent = 'Rp 0'; // <-- BARIS BARU: Set saldo ke nol
+        showPage('app-page'); // Tampilkan halaman aplikasi
+        showAppContent('games-content'); // Tampilkan konten game sebagai default
+    }Login
     loginForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const username = document.getElementById('login-username').value;
