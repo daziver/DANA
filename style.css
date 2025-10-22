@@ -89,6 +89,7 @@ button:hover { background-color: #fff; box-shadow: 0 0 10px var(--primary-color)
 .game-item { background-color: var(--light-bg); border-radius: 8px; overflow: hidden; cursor: pointer; transition: transform 0.2s; border: 1px solid #444; }
 .game-item:hover { transform: scale(1.05); }
 .game-item img { width: 100%; height: auto; display: block; }
+
 /* ================== GAYA BARU UNTUK DEPOSIT & PENARIKAN ================== */
 
 /* --- Form Deposit --- */
