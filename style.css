@@ -247,3 +247,76 @@ button:hover { background-color: #fff; box-shadow: 0 0 10px #00e6e6; }
     text-decoration: none;
     cursor: pointer;
               }
+/* --- [BARU] Gaya untuk Footer Aplikasi --- */
+
+.app-footer {
+    background-color: #f0f2f5; /* Warna latar belakang abu-abu terang */
+    color: #555; /* Warna teks abu-abu gelap */
+    padding: 30px 20px;
+    margin-top: 50px; /* Jarak dari konten di atasnya */
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 450px; /* Samakan dengan lebar konten utama */
+    margin: 0 auto;
+}
+
+.footer-logo {
+    max-width: 120px;
+    margin-bottom: 15px;
+}
+
+.footer-disclaimer {
+    font-size: 0.9em;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.social-section {
+    margin-bottom: 30px;
+}
+
+.social-section p {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.social-icons-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Jarak antar ikon */
+}
+
+.social-icons-wrapper a {
+    display: block;
+}
+
+.social-icons-wrapper img {
+    width: 48px; /* Ukuran ikon sosial media */
+    height: 48px;
+    transition: transform 0.2s;
+}
+
+.social-icons-wrapper img:hover {
+    transform: scale(1.1); /* Efek zoom saat disentuh */
+}
+
+.licensing-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px; /* Jarak antar logo lisensi */
+    flex-wrap: wrap; /* Agar rapi di layar kecil */
+    border-top: 1px solid #ddd;
+    padding-top: 25px;
+}
+
+.licensing-logos img {
+    max-height: 35px; /* Atur tinggi logo lisensi agar seragam */
+    width: auto;
+    filter: grayscale(1); /* Membuat logo jadi abu-abu */
+    opacity: 0.7;
+}
