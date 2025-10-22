@@ -57,30 +57,96 @@ button:hover { background-color: #fff; box-shadow: 0 0 10px #00e6e6; }
 .bank-option:hover { background-color: #333; }
 .bank-option input[type="radio"] { margin-right: 10px; }
 
-/* --- [PERBAIKAN] Halaman Aplikasi Utama --- */
+
+/* --- [PERBAIKAN HEADER] Halaman Aplikasi Utama --- */
 .app-header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 10px 15px;
     background-color: #1a1a1a;
     border-bottom: 2px solid #00e6e6;
+    gap: 15px; /* Jarak antara tombol menu dan panel pengguna */
 }
-.header-left, .header-right { flex-shrink: 0; }
-.header-center { flex-grow: 1; text-align: center; padding: 0 10px; }
-.header-left { position: relative; }
 
-/* Tombol Menu */
+.header-left {
+    position: relative; /* Agar dropdown menu tetap berfungsi */
+    flex-shrink: 0;
+}
 .menu-button { background: none; border: 1px solid #00e6e6; color: #00e6e6; font-size: 24px; padding: 0px 8px; border-radius: 5px; cursor: pointer; }
 
-/* Info Pengguna di Header */
-.welcome-user { display: block; font-size: 0.9em; margin-bottom: 8px; }
-.welcome-user strong { color: #00e6e6; }
-.balance-separator { margin: 0 5px; color: #888; }
-.header-actions { display: flex; justify-content: center; gap: 10px; }
-.header-nav-button { background-color: #333; border: 1px solid #00e6e6; color: #00e6e6; padding: 6px 10px; border-radius: 5px; cursor: pointer; font-size: 14px; font-weight: bold; transition: background-color 0.3s, color 0.3s; }
-.header-nav-button:hover { background-color: #00e6e6; color: #111; }
-#logout-button { background: #444; border-color: #444; color: #fff; padding: 8px 12px; }
+/* Panel Pengguna yang Dirapikan */
+.user-panel {
+    display: flex;
+    flex-direction: column; /* Susun info di atas, tombol di bawah */
+    width: 100%;
+    gap: 8px; /* Jarak antara info dan tombol */
+}
+
+.user-info {
+    background-color: #252525;
+    border-radius: 6px;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between; /* Username di kiri, saldo di kanan */
+    align-items: center;
+    border: 1px solid #444;
+}
+
+.welcome-text {
+    font-size: 1em;
+    font-weight: bold;
+    color: #e0e0e0;
+}
+.welcome-text strong {
+    color: #00e6e6; /* Warna neon untuk username */
+}
+
+.balance-info {
+    font-size: 0.9em;
+    color: #ccc;
+}
+.balance-info strong {
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Penataan Tombol Aksi */
+.header-actions {
+    display: grid; /* Gunakan grid agar tombol sama besar */
+    grid-template-columns: 1fr 1fr 1fr; /* Tiga kolom sama lebar */
+    gap: 8px;
+}
+
+.header-nav-button, #logout-button {
+    padding: 8px 5px; /* Padding disesuaikan */
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    border: 1px solid #00e6e6;
+    background-color: #333;
+    color: #00e6e6;
+    transition: all 0.2s;
+    text-align: center;
+}
+
+.header-nav-button:hover, #logout-button:hover {
+    background-color: #00e6e6;
+    color: #111;
+    box-shadow: 0 0 10px #00e6e6;
+}
+
+#logout-button {
+    border-color: #f44336; /* Warna merah untuk logout */
+    color: #f44336;
+}
+
+#logout-button:hover {
+    background-color: #f44336;
+    color: #fff;
+    box-shadow: 0 0 10px #f44336;
+}
+/* --- AKHIR PERBAIKAN HEADER --- */
 
 /* Navigasi Utama (Games, Deposit, Withdraw) */
 .app-nav { display: flex; background-color: #222; }
@@ -105,13 +171,13 @@ button:hover { background-color: #fff; box-shadow: 0 0 10px #00e6e6; }
 .deposit-info strong { color: #e0e0e0; }
 #withdraw-account-info span, #deposit-info-container span { color: #00e6e6; font-weight: bold; }
 
-/* --- [PERBAIKAN TOTAL] Gaya Menu Dropdown Baru --- */
+/* Gaya Menu Dropdown */
 .dropdown-menu {
     display: none;
     position: absolute;
     top: 110%;
     left: 0;
-    background-color: #f4f4f4; /* Latar belakang putih keabuan */
+    background-color: #f4f4f4;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     min-width: 280px;
@@ -123,78 +189,28 @@ button:hover { background-color: #fff; box-shadow: 0 0 10px #00e6e6; }
 .dropdown-menu a { text-decoration: none; }
 
 /* Tombol Besar Berwarna */
-.menu-button-large {
-    display: flex;
-    align-items: center;
-    padding: 12px;
-    border-radius: 8px;
-    color: white;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
+.menu-button-large { display: flex; align-items: center; padding: 12px; border-radius: 8px; color: white; font-weight: bold; margin-bottom: 10px; }
 .menu-button-large span { font-size: 20px; margin-right: 12px; }
 .menu-button-large.purple { background-color: #8A2BE2; }
 .menu-button-large.green { background-color: #28a745; }
 .menu-button-large.orange { background-color: #fd7e14; }
 
 /* Grid Kategori Game */
-.menu-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin: 20px 0;
-}
-.menu-grid-item {
-    background-color: #fff;
-    color: #333;
-    padding: 10px;
-    border-radius: 8px;
-    text-align: center;
-    font-size: 14px;
-    border: 1px solid #ddd;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-}
+.menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 20px 0; }
+.menu-grid-item { background-color: #fff; color: #333; padding: 10px; border-radius: 8px; text-align: center; font-size: 14px; border: 1px solid #ddd; display: flex; flex-direction: column; align-items: center; gap: 5px; }
 .menu-grid-item span { font-size: 24px; }
 .menu-grid-item.full-width { grid-column: 1 / -1; flex-direction: row; justify-content: center; }
 
 /* Judul Bagian Menu */
 .menu-section { margin-top: 20px; }
-.menu-section-title {
-    color: #555;
-    font-size: 14px;
-    font-weight: bold;
-    margin: 0 0 10px 0;
-    text-transform: uppercase;
-}
+.menu-section-title { color: #555; font-size: 14px; font-weight: bold; margin: 0 0 10px 0; text-transform: uppercase; }
 
 /* Item Promosi */
-.menu-promo-item {
-    display: flex;
-    align-items: center;
-    color: #333;
-    font-weight: bold;
-}
+.menu-promo-item { display: flex; align-items: center; color: #333; font-weight: bold; }
 .menu-promo-item span { font-size: 20px; margin-right: 10px; }
 
 /* Ikon Media Sosial */
 .social-links { display: flex; gap: 15px; align-items: center; }
-.social-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
-    font-family: sans-serif;
-    background-size: contain; /* Untuk ikon IG, WA, TG */
-}
-.social-icon.facebook { background-color: #1877F2; }
-.social-icon.instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
-.social-icon.whatsapp { background: url('https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg') no-repeat center center; background-size: 60%; background-color: #25D366; }
-.social-icon.telegram { background: url('https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg') no-repeat center center; background-size: 60%; background-color: #2AABEE; }
+.social-icon { width: 40px; height: 40px; display: block; transition: transform 0.2s; }
+.social-icon:hover { transform: scale(1.1); }
+.social-icon img { width: 100%; height: 100%; }
