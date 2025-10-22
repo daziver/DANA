@@ -52,7 +52,7 @@
 
     <div id="app-page" class="page active">
         <header class="app-header">
-            <div class="header-menu-container">
+            <div class="header-left">
                 <button id="menu-toggle-button" class="menu-button">&#9776;</button>
                 <div id="dropdown-menu" class="dropdown-menu">
                     <a href="#">Promosi</a>
@@ -63,7 +63,7 @@
                 </div>
             </div>
 
-            <div class="header-left-group">
+            <div class="header-center">
                 <span class="welcome-user">
                     Selamat datang, <strong id="user-display"></strong>!
                     <span class="balance-separator">|</span>
@@ -74,8 +74,10 @@
                     <button class="header-nav-button" data-target="withdraw-content">Penarikan</button>
                 </div>
             </div>
-            
-            <button id="logout-button">Logout</button>
+
+            <div class="header-right">
+                <button id="logout-button">Logout</button>
+            </div>
         </header>
 
         <nav class="app-nav">
@@ -89,23 +91,23 @@
                 <div class="games-category">
                     <h3>Hot</h3>
                     <div class="games-grid">
-                        <div class="game-slot"><img src="https://i.ibb.co/L5hS0K2/mahjong-ways-2.png" alt="Mahjong Ways 2"></div>
-                        <div class="game-slot"><img src="https://i.ibb.co/3cq2pS7/mahjong-ways.png" alt="Mahjong Ways"></div>
-                        <div class="game-slot"><img src="https://i.ibb.co/R7qR5vT/wild-bounty-showdown.png" alt="Wild Bounty"></div>
-                        <div class="game-slot"><img src="https://i.ibb.co/d52X33k/wild-bandito.png" alt="Wild Bandito"></div>
-                        <div class="game-slot"><img src="https://i.ibb.co/k3t2tBd/mahjong-wins.png" alt="Mahjong Wins"></div>
-                        <div class="game-slot"><img src="https://i.ibb.co/7C9mYyZ/gates-of-olympus.png" alt="Gates of Olympus"></div>
+                        <div class="game-slot"><img src="https://i.ibb.co/L5hS0K2/mahjong-ways-2.png" alt="Game"></div>
+                        <div class="game-slot"><img src="https://i.ibb.co/3cq2pS7/mahjong-ways.png" alt="Game"></div>
+                        <div class="game-slot"><img src="https://i.ibb.co/R7qR5vT/wild-bounty-showdown.png" alt="Game"></div>
+                        <div class="game-slot"><img src="https://i.ibb.co/d52X33k/wild-bandito.png" alt="Game"></div>
+                        <div class="game-slot"><img src="https://i.ibb.co/k3t2tBd/mahjong-wins.png" alt="Game"></div>
+                        <div class="game-slot"><img src="https://i.ibb.co/7C9mYyZ/gates-of-olympus.png" alt="Game"></div>
                     </div>
                 </div>
                 <div class="games-category">
                     <h3>Slots</h3>
                      <div class="games-grid">
-                        <div class="game-slot"><img src="https://i.ibb.co/L5hS0K2/mahjong-ways-2.png" alt="Mahjong Ways 2"></div>
-                        <div class="game-slot"><img src="https://i.ibb.co/3cq2pS7/mahjong-ways.png" alt="Mahjong Ways"></div>
-                        <div class="game-slot"><img src="https://i.ibb.co/R7qR5vT/wild-bounty-showdown.png" alt="Wild Bounty"></div>
-                        <div class="game-slot"><img src="https://i.ibb.co/d52X33k/wild-bandito.png" alt="Wild Bandito"></div>
-                        <div class="game-slot"><img src="https://i.ibb.co/K21XzQd/treasures-of-aztec.png" alt="Treasures of Aztec"></div>
-                        <div class="game-slot"><img src="https://i.ibb.co/c8N3jNq/lucky-neko.png" alt="Lucky Neko"></div>
+                        <div class="game-slot"><img src="https://i.ibb.co/L5hS0K2/mahjong-ways-2.png" alt="Game"></div>
+                        <div class="game-slot"><img src="https://i.ibb.co/3cq2pS7/mahjong-ways.png" alt="Game"></div>
+                        <div class="game-slot"><img src="https://i.ibb.co/R7qR5vT/wild-bounty-showdown.png" alt="Game"></div>
+                        <div class="game-slot"><img src="https://i.ibb.co/d52X33k/wild-bandito.png" alt="Game"></div>
+                        <div class="game-slot"><img src="https://i.ibb.co/K21XzQd/treasures-of-aztec.png" alt="Game"></div>
+                        <div class="game-slot"><img src="https://i.ibb.co/c8N3jNq/lucky-neko.png" alt="Game"></div>
                     </div>
                 </div>
             </div>
@@ -121,14 +123,12 @@
                         <option value="bca">BCA</option>
                         <option value="bri">BRI</option>
                     </select>
-
                     <div id="deposit-info-container" class="deposit-info" style="display: none;">
                         <h4>Rekening Tujuan Deposit:</h4>
                         <p><strong>Bank:</strong> <span id="deposit-bank-name"></span></p>
                         <p><strong>Nomor:</strong> <span id="deposit-account-number"></span></p>
                         <p><strong>Atas Nama:</strong> <span id="deposit-account-name"></span></p>
                     </div>
-                    
                     <label for="deposit-amount">Jumlah Deposit</label>
                     <input type="number" id="deposit-amount" placeholder="min. 10.000" required>
                     <button type="submit">Konfirmasi Deposit</button>
@@ -154,4 +154,4 @@
 
     <script src="script.js"></script>
 </body>
-                                                         </html>
+                </html>
