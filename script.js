@@ -1,4 +1,3 @@
-// Menunggu sampai semua elemen HTML dimuat
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- Seleksi Elemen Halaman ---
@@ -26,175 +25,152 @@ document.addEventListener('DOMContentLoaded', () => {
     const headerNavButtons = document.querySelectorAll('.header-nav-button');
     const loginUsernameInput = document.getElementById('login-username');
 
-    // --- Seleksi Elemen Info Penarikan ---
+    // --- Seleksi Info Penarikan ---
     const wdBank = document.getElementById('wd-bank');
     const wdAccountNumber = document.getElementById('wd-account-number');
     const wdAccountName = document.getElementById('wd-account-name');
 
+    // --- [BARU] Seleksi Elemen Menu & Deposit ---
+    const menuToggleButton = document.getElementById('menu-toggle-button');
+    const dropdownMenu = document.getElementById('dropdown-menu');
+    const depositMethodSelect = document.getElementById('deposit-method');
+    const depositInfoContainer = document.getElementById('deposit-info-container');
+    const depositBankName = document.getElementById('deposit-bank-name');
+    const depositAccountNumber = document.getElementById('deposit-account-number');
+    const depositAccountName = document.getElementById('deposit-account-name');
+
+    // --- [BARU] Data Rekening Tujuan Deposit ---
+    const depositAccounts = {
+        'dana': { bank: 'DANA', number: '083827273737', name: 'Hengki' },
+        'gopay': { bank: 'GOPAY', number: '081234567890', name: 'Hengki P.' },
+        'bca': { bank: 'BCA', number: '1234567890', name: 'Hengki Pratama' },
+        'bri': { bank: 'BRI', number: '0987654321', name: 'Hengki Pratama' }
+    };
+
     // --- Fungsi Bantuan ---
-
-    // Fungsi untuk menampilkan halaman tertentu dan menyembunyikan yang lain
     function showPage(pageId) {
-        pages.forEach(page => {
-            page.classList.toggle('active', page.id === pageId);
-        });
+        pages.forEach(page => page.classList.toggle('active', page.id === pageId));
     }
-
-    // Fungsi untuk menampilkan konten di dalam aplikasi (game, deposit, dll)
     function showAppContent(contentId) {
-        contentSections.forEach(section => {
-            section.classList.toggle('active', section.id === contentId);
-        });
-        navButtons.forEach(button => {
-            button.classList.toggle('active', button.dataset.target === contentId);
-        });
+        contentSections.forEach(section => section.classList.toggle('active', section.id === contentId));
+        navButtons.forEach(button => button.classList.toggle('active', button.dataset.target === contentId));
     }
-    
-    // Fungsi untuk "Login"
     function login(userData) {
-        // Simpan seluruh data pengguna sebagai string JSON di localStorage
-        localStorage.setItem('currentUser', JSON.stringify(userData)); 
-
-        // Tampilkan data di UI
+        localStorage.setItem('currentUser', JSON.stringify(userData));
         userDisplay.textContent = userData.username;
-        balanceDisplay.textContent = 'Rp 0'; // Set saldo awal
-        
-        // Tampilkan info rekening di halaman penarikan
+        balanceDisplay.textContent = 'Rp 0';
         wdBank.textContent = userData.bank;
         wdAccountNumber.textContent = userData.accountNumber;
         wdAccountName.textContent = userData.accountName;
-
         showPage('app-page');
         showAppContent('games-content');
     }
 
     // --- Logika Halaman Awal ---
-    
-    // Cek apakah ada user yang sudah login sebelumnya
     const loggedInUser = JSON.parse(localStorage.getItem('currentUser'));
     if (loggedInUser) {
-        // Jika ada, langsung login
         login(loggedInUser);
     } else {
-        // Jika tidak, tampilkan halaman registrasi
-        showPage('register-page');
-        // PERMINTAAN 3: Cek apakah ada username terakhir yang disimpan
+        showPage('login-page'); // Default ke login jika tidak ada sesi
         const lastUsername = localStorage.getItem('lastUsername');
         if (lastUsername) {
-            loginUsernameInput.value = lastUsername; // Isi otomatis form login
+            loginUsernameInput.value = lastUsername;
         }
     }
 
     // --- Event Listener ---
 
-    // 1. Pendaftaran
+    // 1. [BARU] Menu Tiga Titik
+    menuToggleButton.addEventListener('click', (e) => {
+        e.stopPropagation(); // Mencegah klik menyebar ke window
+        dropdownMenu.classList.toggle('show');
+    });
+
+    // Menutup menu jika klik di luar
+    window.addEventListener('click', () => {
+        if (dropdownMenu.classList.contains('show')) {
+            dropdownMenu.classList.remove('show');
+        }
+    });
+
+    // 2. [BARU] Pilihan Deposit Dinamis
+    depositMethodSelect.addEventListener('change', () => {
+        const selectedMethod = depositMethodSelect.value;
+        if (selectedMethod && depositAccounts[selectedMethod]) {
+            const account = depositAccounts[selectedMethod];
+            depositBankName.textContent = account.bank;
+            depositAccountNumber.textContent = account.number;
+            depositAccountName.textContent = account.name;
+            depositInfoContainer.style.display = 'block';
+        } else {
+            depositInfoContainer.style.display = 'none';
+        }
+    });
+
+    // 3. Pendaftaran
     registerForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        
-        // Ambil semua data dari form pendaftaran
-        const username = document.getElementById('reg-username').value;
         const selectedBank = document.querySelector('input[name="bank"]:checked');
-        
         if (!selectedBank) {
-            alert('Silakan pilih bank atau e-wallet terlebih dahulu!');
+            alert('Silakan pilih bank atau e-wallet!');
             return;
         }
-
-        // Buat objek untuk menyimpan semua data user
         const newUser = {
-            username: username,
-            password: "...", // Dalam aplikasi nyata, password harus di-hash
+            username: document.getElementById('reg-username').value,
             phone: document.getElementById('reg-phone').value,
             whatsapp: document.getElementById('reg-whatsapp').value,
             bank: selectedBank.value,
             accountNumber: document.getElementById('reg-account-number').value,
             accountName: document.getElementById('reg-account-name').value,
         };
-        
-        // Simpan data user ke database simulasi (localStorage)
-        // Kita gunakan username sebagai key agar mudah dicari
-        localStorage.setItem(username, JSON.stringify(newUser));
-        // PERMINTAAN 3: Simpan username terakhir untuk auto-fill
-        localStorage.setItem('lastUsername', username);
-
+        localStorage.setItem(newUser.username, JSON.stringify(newUser));
+        localStorage.setItem('lastUsername', newUser.username);
         alert('Pendaftaran berhasil! Anda akan otomatis login.');
-        login(newUser); // Langsung login dengan data yang baru dibuat
+        login(newUser);
     });
 
-    // 2. Login
+    // 4. Login
     loginForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const username = loginUsernameInput.value;
-        
-        // Cari data user di localStorage berdasarkan username
         const userDataString = localStorage.getItem(username);
-
         if (userDataString) {
-            const userData = JSON.parse(userDataString);
             alert('Login berhasil!');
-            login(userData);
+            login(JSON.parse(userDataString));
         } else {
-            alert('Username tidak ditemukan. Silakan daftar terlebih dahulu.');
+            alert('Username tidak ditemukan.');
         }
     });
 
-    // 3. Logout
+    // 5. Logout
     logoutButton.addEventListener('click', () => {
-        const lastUsername = JSON.parse(localStorage.getItem('currentUser')).username;
-        // PERMINTAAN 3: Simpan username yang baru logout untuk auto-fill nanti
-        localStorage.setItem('lastUsername', lastUsername);
-        
-        localStorage.removeItem('currentUser'); // Hapus sesi login
-        
-        alert('Anda telah logout.');
-        loginUsernameInput.value = lastUsername; // Isi field login dengan username terakhir
-        showPage('login-page');
-    });
-
-    // 4. Link Pindah Halaman
-    gotoLoginLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        showPage('login-page');
-        // Isi username jika ada
-        const lastUsername = localStorage.getItem('lastUsername');
-        if (lastUsername) {
-            loginUsernameInput.value = lastUsername;
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if(currentUser) {
+            localStorage.setItem('lastUsername', currentUser.username);
+            loginUsernameInput.value = currentUser.username;
         }
+        localStorage.removeItem('currentUser');
+        alert('Anda telah logout.');
+        showPage('login-page');
     });
 
-    gotoRegisterLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        showPage('register-page');
-    });
+    // Link Navigasi lainnya...
+    gotoLoginLink.addEventListener('click', (e) => { e.preventDefault(); showPage('login-page'); });
+    gotoRegisterLink.addEventListener('click', (e) => { e.preventDefault(); showPage('register-page'); });
+    navButtons.forEach(button => button.addEventListener('click', () => showAppContent(button.dataset.target)));
+    headerNavButtons.forEach(button => button.addEventListener('click', () => showAppContent(button.dataset.target)));
 
-    // 5. Navigasi di dalam Aplikasi
-    navButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const targetId = button.dataset.target;
-            showAppContent(targetId);
-        });
-    });
-
-    headerNavButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const targetId = button.dataset.target;
-            showAppContent(targetId);
-        });
-    });
-
-    // 6. Simulasi Form Deposit & Penarikan
+    // Form Deposit & Penarikan
     depositForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        const amount = document.getElementById('deposit-amount').value;
-        alert(`Simulasi: Permintaan deposit sebesar Rp ${amount} telah dikirim.`);
+        alert(`Simulasi: Permintaan deposit telah dikirim.`);
         depositForm.reset();
+        depositInfoContainer.style.display = 'none';
     });
 
     withdrawForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        const amount = document.getElementById('withdraw-amount').value;
-        alert(`Simulasi: Permintaan penarikan sebesar Rp ${amount} telah dikirim.`);
+        alert(`Simulasi: Permintaan penarikan telah dikirim.`);
         withdrawForm.reset();
     });
-
 });
