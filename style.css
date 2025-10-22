@@ -247,3 +247,95 @@ button:hover { background-color: #fff; box-shadow: 0 0 10px #00e6e6; }
     text-decoration: none;
     cursor: pointer;
               }
+
+/* --- [BARU] Gaya untuk Peringkat Permainan --- */
+
+.peringkat-container {
+    margin-top: 50px; /* Jarak dari konten game di atasnya */
+    padding: 0 10px;
+}
+
+.peringkat-container h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 1.5em;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.peringkat-container h2 .fas {
+    color: #00e6e6; /* Warna neon untuk ikon trofi */
+}
+
+.papan-peringkat {
+    background-color: #fff;
+    color: #333;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.papan-peringkat h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    color: #1a1a1a;
+    text-align: left;
+}
+
+.papan-peringkat ol {
+    list-style-type: decimal;
+    margin: 0;
+    padding-left: 30px; /* Ruang untuk nomor peringkat */
+}
+
+.papan-peringkat li {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 1em;
+}
+
+.papan-peringkat li:last-child {
+    border-bottom: none; /* Hilangkan garis di item terakhir */
+}
+
+.papan-peringkat .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+}
+
+.papan-peringkat .username {
+    flex-grow: 1; /* Membuat nama mengisi ruang kosong */
+    font-weight: 600;
+}
+
+.papan-peringkat .vip-level {
+    font-size: 0.9em;
+    color: #555;
+    margin-right: 15px;
+    background-color: #f0f0f0;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.papan-peringkat .change-indicator {
+    font-weight: bold;
+    width: 30px;
+    text-align: right;
+    color: #888;
+}
+
+.papan-peringkat .change-indicator.up {
+    color: #28a745; /* Warna hijau untuk naik peringkat */
+}
+
+.papan-peringkat .change-indicator.down {
+    color: #dc3545; /* Warna merah untuk turun peringkat */
+    }
