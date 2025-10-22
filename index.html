@@ -119,14 +119,71 @@
                      <div class="games-grid">
                         <div class="game-slot"><img src="https://i.ibb.co/L5hS0K2/mahjong-ways-2.png" alt="Game"></div>
                         <div class="game-slot"><img src="https://i.ibb.co/3cq2pS7/mahjong-ways.png" alt="Game"></div>
-                        <div class="game-slot"><img src="https://i.ibb.co/R7qR5vT/wild-bounty-showdown.png" alt="Game"></div>
+                     <div class="game-slot"><img src="https://i.ibb.co/R7qR5vT/wild-bounty-showdown.png" alt="Game"></div>
                         <div class="game-slot"><img src="https://i.ibb.co/d52X33k/wild-bandito.png" alt="Game"></div>
                         <div class="game-slot"><img src="https://i.ibb.co/K21XzQd/treasures-of-aztec.png" alt="Game"></div>
                         <div class="game-slot"><img src="https://i.ibb.co/c8N3jNq/lucky-neko.png" alt="Game"></div>
                     </div>
                 </div>
+            </div>    
+            
+            <div id="deposit-content" class="content-section">
+    <h3 class="neon-text">Form Deposit</h3>
+    <form id="deposit-form" class="sub-form">
+        <label for="deposit-method">Pilih Metode Deposit</label>
+        <select id="deposit-method" required>
+            <option value="" disabled selected>-- Pilih E-Wallet / Bank --</option>
+            <option value="dana">DANA</option>
+            <option value="gopay">GOPAY</option>
+            <option value="bca">BCA</option>
+            <option value="bri">BRI</option>
+            <option value="qris">QRIS</option>
+        </select>
+
+        <div id="deposit-info-container" class="deposit-info" style="display: none;">
+            <h4>Rekening Tujuan Deposit:</h4>
+            <p><strong>Bank:</strong> <span id="deposit-bank-name"></span></p>
+            <p><strong>Nomor:</strong> <span id="deposit-account-number"></span></p>
+            <p><strong>Atas Nama:</strong> <span id="deposit-account-name"></span></p>
+        </div>
+
+        <div id="qris-image-container" class="deposit-info" style="display: none; text-align: center;">
+            <h4>Scan QR Code di Bawah Ini:</h4>
+            <img id="qris-image" src="qris.png" alt="QRIS Code" style="max-width: 250px; border-radius: 8px; margin-top: 10px;">
+        </div>
+
+        <label for="deposit-amount">Jumlah Deposit</label>
+        <input type="number" id="deposit-amount" placeholder="min. 10.000" required>
+        <button type="submit">Konfirmasi Deposit</button>
+    </form>
             </div>
-            <div class="peringkat-container">
+            <div id="withdraw-content" class="content-section">
+                <h3 class="neon-text">Form Penarikan</h3>
+                <form id="withdraw-form" class="sub-form">
+                    <label for="withdraw-amount">Jumlah Penarikan</label>
+                    <input type="number" id="withdraw-amount" placeholder="min. 50.000" required>
+                    <div id="withdraw-account-info" class="deposit-info">
+                        <h4>Penarikan akan dikirim ke:</h4>
+                        <p><strong>Bank/E-Wallet:</strong> <span id="wd-bank"></span></p>
+                        <p><strong>Nomor Rekening:</strong> <span id="wd-account-number"></span></p>
+                        <p><strong>Atas Nama:</strong> <span id="wd-account-name"></span></p>
+                    </div>
+                    <button type="submit">Konfirmasi Penarikan</button>
+                </form>
+            </div>
+
+        </main>
+    </div>
+
+    <div id="game-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3 class="neon-text">Memuat Game...</h3>
+            <p>Game ini sedang dalam pengembangan.</p>
+            <p>Silakan kembali lagi nanti!</p>
+        </div>
+    </div>
+    <div class="peringkat-container">
     
     <h2><i class="fas fa-trophy"></i> Peringkat Permainan</h2>
 
@@ -190,63 +247,6 @@
             </li>
         </ol>
     </div>
-</div>
-            
-            <div id="deposit-content" class="content-section">
-    <h3 class="neon-text">Form Deposit</h3>
-    <form id="deposit-form" class="sub-form">
-        <label for="deposit-method">Pilih Metode Deposit</label>
-        <select id="deposit-method" required>
-            <option value="" disabled selected>-- Pilih E-Wallet / Bank --</option>
-            <option value="dana">DANA</option>
-            <option value="gopay">GOPAY</option>
-            <option value="bca">BCA</option>
-            <option value="bri">BRI</option>
-            <option value="qris">QRIS</option>
-        </select>
-
-        <div id="deposit-info-container" class="deposit-info" style="display: none;">
-            <h4>Rekening Tujuan Deposit:</h4>
-            <p><strong>Bank:</strong> <span id="deposit-bank-name"></span></p>
-            <p><strong>Nomor:</strong> <span id="deposit-account-number"></span></p>
-            <p><strong>Atas Nama:</strong> <span id="deposit-account-name"></span></p>
-        </div>
-
-        <div id="qris-image-container" class="deposit-info" style="display: none; text-align: center;">
-            <h4>Scan QR Code di Bawah Ini:</h4>
-            <img id="qris-image" src="qris.png" alt="QRIS Code" style="max-width: 250px; border-radius: 8px; margin-top: 10px;">
-        </div>
-
-        <label for="deposit-amount">Jumlah Deposit</label>
-        <input type="number" id="deposit-amount" placeholder="min. 10.000" required>
-        <button type="submit">Konfirmasi Deposit</button>
-    </form>
-            </div>
-            <div id="withdraw-content" class="content-section">
-                <h3 class="neon-text">Form Penarikan</h3>
-                <form id="withdraw-form" class="sub-form">
-                    <label for="withdraw-amount">Jumlah Penarikan</label>
-                    <input type="number" id="withdraw-amount" placeholder="min. 50.000" required>
-                    <div id="withdraw-account-info" class="deposit-info">
-                        <h4>Penarikan akan dikirim ke:</h4>
-                        <p><strong>Bank/E-Wallet:</strong> <span id="wd-bank"></span></p>
-                        <p><strong>Nomor Rekening:</strong> <span id="wd-account-number"></span></p>
-                        <p><strong>Atas Nama:</strong> <span id="wd-account-name"></span></p>
-                    </div>
-                    <button type="submit">Konfirmasi Penarikan</button>
-                </form>
-            </div>
-
-        </main>
-    </div>
-
-    <div id="game-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h3 class="neon-text">Memuat Game...</h3>
-            <p>Game ini sedang dalam pengembangan.</p>
-            <p>Silakan kembali lagi nanti!</p>
-        </div>
     </div>
 
     <script src="script.js"></script>
