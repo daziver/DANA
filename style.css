@@ -247,18 +247,23 @@ button:hover { background-color: #fff; box-shadow: 0 0 10px #00e6e6; }
     text-decoration: none;
     cursor: pointer;
               }
-/* --- [BARU] Gaya untuk Footer Aplikasi --- */
+/* --- [BARU] Gaya untuk Footer Aplikasi (WARNA DISESUAIKAN) --- */
 
 .app-footer {
-    background-color: #f0f2f5; /* Warna latar belakang abu-abu terang */
-    color: #555; /* Warna teks abu-abu gelap */
-    padding: 30px 20px;
-    margin-top: 50px; /* Jarak dari konten di atasnya */
+    background-color: #1a1a1a; /* Latar belakang gelap yang konsisten */
+    color: #a0a0a0;            /* Warna teks abu-abu terang, lebih nyaman dibaca */
+    padding: 40px 20px;
+    margin-top: 50px;
     text-align: center;
+    width: 100%;
+    max-width: 450px;          /* Samakan dengan lebar konten utama */
+    box-sizing: border-box;
+    border-top: 2px solid #00e6e6; /* Menambahkan garis neon di atas footer */
+    box-shadow: 0 -5px 15px -5px #00e6e633; /* Memberi efek glow ke atas */
 }
 
 .footer-content {
-    max-width: 450px; /* Samakan dengan lebar konten utama */
+    max-width: 450px;
     margin: 0 auto;
 }
 
@@ -281,13 +286,13 @@ button:hover { background-color: #fff; box-shadow: 0 0 10px #00e6e6; }
     font-size: 1.1em;
     font-weight: 600;
     margin-bottom: 15px;
-    color: #333;
+    color: #e0e0e0; /* Warna putih cerah untuk judul "Ikuti kami" */
 }
 
 .social-icons-wrapper {
     display: flex;
     justify-content: center;
-    gap: 20px; /* Jarak antar ikon */
+    gap: 20px;
 }
 
 .social-icons-wrapper a {
@@ -295,28 +300,31 @@ button:hover { background-color: #fff; box-shadow: 0 0 10px #00e6e6; }
 }
 
 .social-icons-wrapper img {
-    width: 48px; /* Ukuran ikon sosial media */
+    width: 48px;
     height: 48px;
-    transition: transform 0.2s;
+    transition: transform 0.2s, opacity 0.2s;
+    opacity: 0.8; /* Sedikit transparan agar tidak terlalu mencolok */
 }
 
 .social-icons-wrapper img:hover {
-    transform: scale(1.1); /* Efek zoom saat disentuh */
+    transform: scale(1.1);
+    opacity: 1; /* Kembali normal saat kursor di atasnya */
 }
 
 .licensing-logos {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 25px; /* Jarak antar logo lisensi */
-    flex-wrap: wrap; /* Agar rapi di layar kecil */
-    border-top: 1px solid #ddd;
+    gap: 25px;
+    flex-wrap: wrap;
+    border-top: 1px solid #333; /* Warna garis diubah agar terlihat */
     padding-top: 25px;
 }
 
 .licensing-logos img {
-    max-height: 35px; /* Atur tinggi logo lisensi agar seragam */
+    max-height: 35px;
     width: auto;
-    filter: grayscale(1); /* Membuat logo jadi abu-abu */
+    /* Trik agar logo hitam terlihat bagus di background gelap */
+    filter: grayscale(1) brightness(1.5);
     opacity: 0.7;
-}
+    }
