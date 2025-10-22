@@ -7,30 +7,34 @@ body {
     padding: 0;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Ubah ke flex-start agar konten mulai dari atas */
     min-height: 100vh;
+}
+
+/* Penampung Form & Halaman Aplikasi */
+.form-container, #app-page {
+    width: 100%;
+    max-width: 450px; /* Lebar maksimal yang ideal untuk tampilan mobile */
+    box-sizing: border-box; /* Pastikan padding tidak menambah lebar */
 }
 
 /* Efek Neon Utama */
 .neon-text {
     color: #fff;
     text-shadow:
-        0 0 7px #00e6e6,
-        0 0 10px #00e6e6,
-        0 0 21px #00e6e6,
-        0 0 42px #00e6e6,
-        0 0 82px #00e6e6;
+        0 0 7px #00e6e6, 0 0 10px #00e6e6, 0 0 21px #00e6e6,
+        0 0 42px #00e6e6, 0 0 82px #00e6e6;
     text-align: center;
 }
 
-/* Penampung Form */
+/* Penampung Form Login/Register */
 .form-container {
     background-color: #1a1a1a;
+    margin-top: 50px; /* Beri jarak dari atas */
     padding: 30px;
     border-radius: 10px;
     border: 2px solid #00e6e6;
     box-shadow: 0 0 15px #00e6e6;
-    width: 350px;
 }
 
 form {
@@ -48,9 +52,7 @@ input, select, button {
     font-size: 16px;
 }
 
-input::placeholder {
-    color: #888;
-}
+input::placeholder { color: #888; }
 
 button {
     background-color: #00e6e6;
@@ -60,87 +62,47 @@ button {
     text-shadow: none;
     transition: background-color 0.3s, box-shadow 0.3s;
 }
-
 button:hover {
     background-color: #fff;
     box-shadow: 0 0 10px #00e6e6;
 }
 
-/* Pengaturan Halaman */
-.page {
-    display: none; /* Sembunyikan semua halaman secara default */
-    width: 100%;
-    max-width: 800px;
-}
-
-.page.active {
-    display: block; /* Tampilkan halaman yang aktif */
-}
-
-/* Tautan di form */
-.form-container p {
-    text-align: center;
-    font-size: 14px;
-}
-.form-container a {
-    color: #00e6e6;
-    text-decoration: none;
-    font-weight: bold;
-}
+/* Pengaturan Halaman (Register, Login, App) */
+.page { display: none; }
+.page.active { display: block; }
+.form-container p { text-align: center; font-size: 14px; }
+.form-container a { color: #00e6e6; text-decoration: none; font-weight: bold; }
 
 /* Gaya Form Pendaftaran */
-.bank-options-container {
-    border: 1px solid #444;
-    border-radius: 5px;
-    padding: 10px;
-}
-.bank-options-container h4 {
-    margin-top: 0;
-    margin-bottom: 10px;
-    text-align: center;
-    color: #00e6e6;
-    font-weight: normal;
-}
-.bank-options-list {
-    max-height: 150px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding-right: 10px;
-}
-.bank-option {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    padding: 5px;
-    border-radius: 4px;
-    transition: background-color 0.2s;
-}
-.bank-option:hover {
-    background-color: #333;
-}
-.bank-option input[type="radio"] {
-    margin-right: 10px;
-}
+.bank-options-container { border: 1px solid #444; border-radius: 5px; padding: 10px; }
+.bank-options-container h4 { margin-top: 0; margin-bottom: 10px; text-align: center; color: #00e6e6; font-weight: normal; }
+.bank-options-list { max-height: 150px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; padding-right: 10px; }
+.bank-option { display: flex; align-items: center; cursor: pointer; padding: 5px; border-radius: 4px; transition: background-color 0.2s; }
+.bank-option:hover { background-color: #333; }
+.bank-option input[type="radio"] { margin-right: 10px; }
 
 
-/* --- Halaman Aplikasi Utama --- */
+/* --- [PERBAIKAN TOTAL] Halaman Aplikasi Utama --- */
+
 .app-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
+    padding: 10px 15px;
     background-color: #1a1a1a;
     border-bottom: 2px solid #00e6e6;
-    position: relative;
 }
-
-/* [DIPERBAIKI] Gaya untuk Menu Tiga Titik & Dropdown */
-.header-menu-container {
-    position: relative; /* Kontainer agar dropdown bisa diposisikan */
+.header-left, .header-right {
+    flex-shrink: 0; /* Mencegah tombol menyusut */
 }
+.header-center {
+    flex-grow: 1; /* Mengambil ruang tengah yang tersisa */
+    text-align: center;
+    padding: 0 10px;
+}
+.header-left { position: relative; } /* Penting untuk posisi dropdown */
 
+/* Gaya Menu Dropdown */
 .menu-button {
     background: none;
     border: 1px solid #00e6e6;
@@ -152,24 +114,18 @@ button:hover {
 }
 
 .dropdown-menu {
-    display: none; /* [INI KUNCI PERBAIKANNYA] Sembunyikan menu secara default */
+    display: none; /* Sembunyikan secara default */
     position: absolute;
-    top: 100%;
+    top: 110%; /* Posisi di bawah tombol, dengan sedikit jarak */
     left: 0;
-    background-color: #2a2a2a; /* Warna sedikit beda agar menonjol */
+    background-color: #1a1a1a;
     border: 1px solid #00e6e6;
     border-radius: 5px;
-    box-shadow: 0 0 15px #00e6e6;
+    box-shadow: 0 5px 15px rgba(0, 230, 230, 0.3);
     min-width: 160px;
-    z-index: 100;
+    z-index: 1000;
 }
-
-/* JavaScript akan menambahkan kelas .show untuk menampilkan menu ini */
-.dropdown-menu.show {
-    display: block; 
-}
-
-/* [DIPERBAIKI] Menghilangkan gaya default link (biru dan garis bawah) */
+.dropdown-menu.show { display: block; } /* Kelas dari JS untuk menampilkan */
 .dropdown-menu a {
     color: #e0e0e0;
     padding: 12px 16px;
@@ -177,65 +133,33 @@ button:hover {
     display: block;
     text-align: left;
 }
+.dropdown-menu a:hover { background-color: #333; color: #00e6e6; }
 
-.dropdown-menu a:hover {
-    background-color: #333;
-    color: #00e6e6;
-}
-
-/* Grup di header */
-.header-left-group {
-    display: flex;
-    flex-direction: column; 
-    gap: 10px;
-    align-items: flex-start;
-    flex-grow: 1;
-    margin: 0 20px;
-}
-
-.welcome-user strong {
-    color: #00e6e6;
-}
+/* Info Pengguna di Header */
 .welcome-user {
-    font-size: 1.1em;
+    display: block; /* Agar info saldo bisa di bawahnya */
+    font-size: 0.9em;
+    margin-bottom: 8px;
 }
-.balance-separator {
-    margin: 0 10px;
-    color: #888;
-}
-.header-actions {
-    display: flex;
-    gap: 10px;
-}
+.welcome-user strong { color: #00e6e6; }
+.balance-separator { margin: 0 5px; color: #888; }
+.header-actions { display: flex; justify-content: center; gap: 10px; }
 .header-nav-button {
     background-color: #333;
     border: 1px solid #00e6e6;
     color: #00e6e6;
-    padding: 8px 12px;
+    padding: 6px 10px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
     font-weight: bold;
     transition: background-color 0.3s, color 0.3s;
 }
-.header-nav-button:hover {
-    background-color: #00e6e6;
-    color: #111;
-}
+.header-nav-button:hover { background-color: #00e6e6; color: #111; }
+#logout-button { background: #444; border-color: #444; color: #fff; padding: 8px 12px; }
 
-#logout-button {
-    background: #444;
-    border-color: #444;
-    color: #fff;
-    padding: 8px 12px;
-}
-
-.app-nav {
-    display: flex;
-    justify-content: center;
-    background-color: #222;
-}
-
+/* Navigasi Utama (Games, Deposit, Withdraw) */
+.app-nav { display: flex; background-color: #222; }
 .nav-button {
     flex-grow: 1;
     background: none;
@@ -246,27 +170,15 @@ button:hover {
     color: #fff;
     cursor: pointer;
 }
-
-.nav-button.active {
-    border-bottom-color: #00e6e6;
-    color: #00e6e6;
-}
+.nav-button.active { border-bottom-color: #00e6e6; color: #00e6e6; }
 
 /* Konten Aplikasi */
-.app-content {
-    padding: 20px;
-}
-.content-section {
-    display: none;
-}
-.content-section.active {
-    display: block;
-}
+.app-content { padding: 20px; }
+.content-section { display: none; }
+.content-section.active { display: block; }
 
-/* Gaya Game */
-.games-category {
-    margin-bottom: 30px;
-}
+/* [PERBAIKAN TOTAL] Gaya Game */
+.games-category { margin-bottom: 30px; }
 .games-category h3 {
     color: #fff;
     text-shadow: 0 0 5px #f0f;
@@ -276,53 +188,30 @@ button:hover {
 }
 .games-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    grid-template-columns: repeat(3, 1fr); /* Tampilan 3 kolom */
     gap: 15px;
 }
-
-/* [DIPERBAIKI] Gaya Game Slot */
 .game-slot {
-    background-color: #222;
     border: 2px solid #f0f;
     box-shadow: 0 0 10px #f0f;
     border-radius: 8px;
     cursor: pointer;
     transition: transform 0.2s;
     overflow: hidden;
-    aspect-ratio: 1 / 1; /* [INI KUNCI PERBAIKANNYA] Membuat slot jadi kotak sempurna */
+    aspect-ratio: 1 / 1; /* Kunci: Memaksa bentuk jadi kotak sempurna */
+    background-color: #222; /* Warna latar belakang jika gambar gagal dimuat */
 }
-
 .game-slot img {
     width: 100%;
     height: 100%;
     object-fit: cover; /* Memastikan gambar mengisi kotak tanpa gepeng */
     display: block;
 }
-.game-slot:hover {
-    transform: scale(1.05);
-}
+.game-slot:hover { transform: scale(1.05); }
 
-/* Form Deposit/Penarikan */
-.sub-form {
-    background-color: #1a1a1a;
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid #444;
-}
-.deposit-info {
-    background-color: #222;
-    padding: 15px;
-    border-radius: 5px;
-    border-left: 4px solid #00e6e6;
-    margin-bottom: 20px;
-}
-.deposit-info p {
-    margin: 5px 0;
-}
-.deposit-info strong {
-    color: #e0e0e0;
-}
-#withdraw-account-info span, #deposit-info-container span {
-    color: #00e6e6;
-    font-weight: bold;
-    }
+/* Form di dalam Aplikasi */
+.sub-form { background-color: #1a1a1a; padding: 20px; border-radius: 8px; border: 1px solid #444; }
+.deposit-info { background-color: #222; padding: 15px; border-radius: 5px; border-left: 4px solid #00e6e6; margin: 15px 0; }
+.deposit-info p { margin: 5px 0; }
+.deposit-info strong { color: #e0e0e0; }
+#withdraw-account-info span, #deposit-info-container span { color: #00e6e6; font-weight: bold; }
