@@ -59,9 +59,11 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('currentUser', JSON.stringify(userData));
         userDisplay.textContent = userData.username;
         balanceDisplay.textContent = 'Rp 0';
-        wdBank.textContent = userData.bank;
-        wdAccountNumber.textContent = userData.accountNumber;
-        wdAccountName.textContent = userData.accountName;
+        if (wdBank) { // Memastikan elemen ada sebelum diisi
+            wdBank.textContent = userData.bank;
+            wdAccountNumber.textContent = userData.accountNumber;
+            wdAccountName.textContent = userData.accountName;
+        }
         showPage('app-page');
         showAppContent('games-content');
     }
@@ -91,19 +93,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Pilihan Deposit Dinamis
-    depositMethodSelect.addEventListener('change', () => {
-        const selectedMethod = depositMethodSelect.value;
-        if (selectedMethod && depositAccounts[selectedMethod]) {
-            const account = depositAccounts[selectedMethod];
-            depositBankName.textContent = account.bank;
-            depositAccountNumber.textContent = account.number;
-            depositAccountName.textContent = account.name;
-            depositInfoContainer.style.display = 'block';
-        } else {
-            depositInfoContainer.style.display = 'none';
-        }
-    });
+    // Pilihan Deposit Dinamis (jika ada formnya)
+    if (depositMethodSelect) {
+        depositMethodSelect.addEventListener('change', () => {
+            const selectedMethod = depositMethodSelect.value;
+            if (selectedMethod && depositAccounts[selectedMethod]) {
+                const account = depositAccounts[selectedMethod];
+                depositBankName.textContent = account.bank;
+                depositAccountNumber.textContent = account.number;
+                depositAccountName.textContent = account.name;
+                depositInfoContainer.style.display = 'block';
+            } else {
+                depositInfoContainer.style.display = 'none';
+            }
+        });
+    }
 
     // Pendaftaran
     registerForm.addEventListener('submit', (e) => {
@@ -158,16 +162,22 @@ document.addEventListener('DOMContentLoaded', () => {
     navButtons.forEach(button => button.addEventListener('click', () => showAppContent(button.dataset.target)));
     headerNavButtons.forEach(button => button.addEventListener('click', () => showAppContent(button.dataset.target)));
 
-    // Form Deposit & Penarikan
-depositForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert('Deposit telah di proses'); // <-- UBAH TEKS DI SINI
-    depositForm.reset();
-    depositInfoContainer.style.display = 'none';
-});
-    withdrawForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert(`Simulasi: Permintaan penarikan telah dikirim.`);
-        withdrawForm.reset();
-    });
+    // Form Deposit & Penarikan (jika ada formnya)
+    if (depositForm) {
+        depositForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Deposit telah di proses');
+            depositForm.reset();
+            if (depositInfoContainer) {
+                depositInfoContainer.style.display = 'none';
+            }
+        });
+    }
+    if (withdrawForm) {
+        withdrawForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert(`Simulasi: Permintaan penarikan telah dikirim.`);
+            withdrawForm.reset();
+        });
+    }
 });
