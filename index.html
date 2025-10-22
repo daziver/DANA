@@ -25,11 +25,9 @@
                 <select id="bank-select" class="account-select" required>
                     <option value="" disabled selected>- Silahkan pilih Bank -</option>
                     <option value="bca">BCA</option>
-                    <option value="bank_sumsel">BANK SUMSEL</option>
                     <option value="bri">BRI</option>
                     <option value="bni">BNI</option>
                     <option value="mandiri">MANDIRI</option>
-                    <option value="cimb">CIMB NIAGA</option>
                 </select>
                 <select id="ewallet-select" class="account-select" required>
                     <option value="" disabled selected>- Silahkan pilih E-wallet -</option>
@@ -49,6 +47,16 @@
         </div>
 
     <div id="app-page" class="page">
+        <div id="sidebar-menu" class="sidebar">
+            <a href="#" class="sidebar-logo">LOGO ANDA</a>
+            <a href="#"><i class="fas fa-gift"></i> Promosi</a>
+            <a href="#"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+            <a href="#"><i class="fab fa-telegram"></i> Telegram</a>
+            <a href="#"><i class="fas fa-headset"></i> Hubungi Kami</a>
+        </div>
+        <div id="overlay" class="overlay"></div>
+
         <header class="app-header">
             <div class="header-left">
                 <button id="menu-toggle"><i class="fas fa-bars"></i></button>
@@ -61,60 +69,31 @@
                 <button id="logout-button" class="header-icon-btn"><i class="fas fa-sign-out-alt"></i></button>
             </div>
         </header>
+
         <nav class="app-nav">
             <button class="nav-button active" data-target="games-content"><i class="fas fa-gamepad"></i><span>Semua Game</span></button>
+            <button class="nav-button" data-target="casino-content"><i class="fas fa-dice"></i><span>Casino</span></button>
+            <button class="nav-button" data-target="liveslot-content"><i class="fas fa-tv"></i><span>Live Slot</span></button>
             <button class="nav-button" data-target="deposit-content"><i class="fas fa-wallet"></i><span>Deposit</span></button>
             <button class="nav-button" data-target="withdraw-content"><i class="fas fa-money-bill-wave"></i><span>Penarikan</span></button>
         </nav>
         
         <main class="app-content">
             <div id="games-content" class="content-section active">
+                <h3 class="category-title">Hot Games</h3>
+                <div class="games-grid">
+                    <div class="game-item"><img src="images/mahjong_ways_2.png" alt="Game"></div>
+                    <div class="game-item"><img src="images/gates_of_olympus.png" alt="Game"></div>
+                    <div class="game-item"><img src="images/wild_bandito.png" alt="Game"></div>
+                    <div class="game-item"><img src="images/lucky_neko.png" alt="Game"></div>
                 </div>
-
+            </div>
+            <div id="casino-content" class="content-section"><h3 class="neon-text">Casino</h3><p style="text-align: center;">Segera hadir...</p></div>
+            <div id="liveslot-content" class="content-section"><h3 class="neon-text">Live Slot</h3><p style="text-align: center;">Segera hadir...</p></div>
             <div id="deposit-content" class="content-section">
-                <h3 class="neon-text">Form Deposit</h3>
-                <div class="deposit-instructions">
-                    <p>Silakan lakukan transfer ke salah satu rekening tujuan di bawah ini.</p>
-                    
-                    <div class="deposit-option">
-                        <i class="fas fa-building-columns"></i>
-                        <div>
-                            <h4>BANK BCA</h4>
-                            <p>No. Rekening: <strong>1234567890</strong></p>
-                            <p>Atas Nama: <strong>PT SUKSES BERSAMA</strong></p>
-                        </div>
-                    </div>
-                    <div class="deposit-option">
-                        <i class="fas fa-wallet"></i>
-                        <div>
-                            <h4>E-WALLET DANA</h4>
-                            <p>No. Telepon: <strong>081234567890</strong></p>
-                            <p>Atas Nama: <strong>HENGKI</strong></p>
-                        </div>
-                    </div>
-
-                </div>
-                <form id="deposit-form" class="sub-form">
-                    <label for="deposit-amount">Jumlah Deposit</label>
-                    <input type="number" id="deposit-amount" placeholder="Minimal Rp 10.000" required>
-                    <button type="submit">Konfirmasi Deposit</button>
-                </form>
-            </div>
-
+                 </div>
             <div id="withdraw-content" class="content-section">
-                <h3 class="neon-text">Form Penarikan</h3>
-                <div class="account-info-box">
-                    <h4>Penarikan akan dikirim ke rekening terdaftar Anda:</h4>
-                    <p>Bank/E-wallet: <strong id="wd-bank-name">-</strong></p>
-                    <p>Nomor Rekening: <strong id="wd-account-number">-</strong></p>
-                    <p>Nama Pemilik: <strong id="wd-account-name">-</strong></p>
                 </div>
-                <form id="withdraw-form" class="sub-form">
-                    <label for="withdraw-amount">Jumlah Penarikan</label>
-                    <input type="number" id="withdraw-amount" placeholder="Minimal Rp 50.000" required>
-                    <button type="submit">Konfirmasi Penarikan</button>
-                </form>
-            </div>
         </main>
     </div>
 
