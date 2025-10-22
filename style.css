@@ -81,14 +81,16 @@ button:hover { background-color: #fff; box-shadow: 0 0 10px #00e6e6; }
     gap: 8px;
 }
 
+/* SPASI KE BAWAH (tampilan user dan saldo) */
 .user-info {
     background-color: #252525;
     border-radius: 6px;
-    padding: 5px 10px;
+    padding: 8px 10px; /* Sedikit menambah padding agar tidak terlalu sempit */
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column; /* Ini membuat item tersusun ke bawah */
+    align-items: flex-start; /* Ini membuat tulisan rata kiri */
     border: 1px solid #444;
+    gap: 4px; /* Menambah sedikit jarak antara USERID dan Saldo */
 }
 
 .welcome-text {
