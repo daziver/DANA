@@ -1,149 +1,149 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- Seleksi Elemen Halaman ---
+    // --- Seleksi Elemen Global ---
     const pages = document.querySelectorAll('.page');
+    const registerPage = document.getElementById('register-page');
+    const loginPage = document.getElementById('login-page');
     const appPage = document.getElementById('app-page');
-
-    // --- Seleksi Elemen Form ---
+    
+    // --- Form ---
     const registerForm = document.getElementById('register-form');
     const loginForm = document.getElementById('login-form');
-    const depositForm = document.getElementById('deposit-form');
-    const withdrawForm = document.getElementById('withdraw-form');
 
-    // --- Seleksi Elemen Navigasi & Interaktif ---
+    // --- Tombol & Link Navigasi ---
     const gotoLoginLink = document.getElementById('goto-login');
     const gotoRegisterLink = document.getElementById('goto-register');
     const logoutButton = document.getElementById('logout-button');
     const menuToggle = document.getElementById('menu-toggle');
+    const navButtons = document.querySelectorAll('.nav-button');
+
+    // --- Tampilan Aplikasi ---
+    const balanceDisplay = document.getElementById('balance-display');
+    const contentSections = document.querySelectorAll('.content-section');
     const sidebarMenu = document.getElementById('sidebar-menu');
     const overlay = document.getElementById('overlay');
-    
-    // --- Seleksi Tampilan Aplikasi ---
-    const userDisplay = document.getElementById('user-display');
-    const balanceDisplay = document.getElementById('balance-display');
-    const navButtons = document.querySelectorAll('.nav-button');
-    const contentSections = document.querySelectorAll('.content-section');
-    const gameTabs = document.querySelectorAll('.tab-button');
-    const tabContents = document.querySelectorAll('.tab-content');
 
-    // --- Variabel Penyimpanan ---
-    let loggedInUser = localStorage.getItem('simulatedUser');
+    // --- Elemen Form Pendaftaran BARU ---
+    const accountTypeRadios = document.querySelectorAll('input[name="accountType"]');
+    const bankSelect = document.getElementById('bank-select');
+    const ewalletSelect = document.getElementById('ewallet-select');
 
     // --- Fungsi Bantuan ---
+    const showPage = (pageId) => {
+        pages.forEach(page => page.classList.toggle('active', page.id === pageId));
+    };
 
-    function showPage(pageId) {
-        pages.forEach(page => {
-            page.classList.toggle('active', page.id === pageId);
-        });
-    }
+    const showAppContent = (contentId) => {
+        contentSections.forEach(section => section.classList.toggle('active', section.id === contentId));
+        navButtons.forEach(button => button.classList.toggle('active', button.dataset.target === contentId));
+    };
 
-    function showAppContent(contentId) {
-        contentSections.forEach(section => {
-            section.classList.toggle('active', section.id === contentId);
-        });
-        navButtons.forEach(button => {
-            button.classList.toggle('active', button.dataset.target === contentId);
-        });
-    }
+    // --- FUNGSI LOGIN UTAMA ---
+    const login = (username) => {
+        localStorage.setItem('currentUser', username);
+        const userData = JSON.parse(localStorage.getItem(username));
+        
+        // Mengatur saldo. Jika baru daftar, saldo adalah 0.
+        const balance = userData ? userData.balance : 0;
+        balanceDisplay.textContent = `Rp ${balance}`;
 
-    function login(username) {
-        loggedInUser = username;
-        localStorage.setItem('simulatedUser', username);
-        // userDisplay.textContent = username; // Username tidak lagi ditampilkan di header
-        balanceDisplay.textContent = '38,12'; // Set saldo default
         showPage('app-page');
         showAppContent('games-content');
-    }
+    };
 
-    // --- Logika Halaman Awal ---
-    if (loggedInUser) {
-        login(loggedInUser);
-    } else {
-        showPage('register-page');
-    }
-
-    // --- Event Listener ---
+    // --- EVENT LISTENER ---
 
     // 1. Pendaftaran
     registerForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const username = document.getElementById('reg-username').value;
-        alert('Pendaftaran berhasil! Anda akan otomatis login.');
-        login(username);
-    });
 
+        if (localStorage.getItem(username)) {
+            alert('Username sudah terdaftar. Silakan gunakan username lain.');
+            return;
+        }
+        
+        const selectedAccountType = document.querySelector('input[name="accountType"]:checked').value;
+        
+        // Simpan semua data pendaftaran ke dalam satu objek
+        const userData = {
+            username: username,
+            password: document.getElementById('reg-password').value, // Di aplikasi nyata, ini harus di-hash!
+            phone: document.querySelector('input[placeholder="Nomor HP"]').value,
+            whatsapp: document.querySelector('input[placeholder="Nomor WhatsApp"]').value,
+            accountType: selectedAccountType,
+            bankOrEwallet: selectedAccountType === 'bank' ? bankSelect.value : ewalletSelect.value,
+            accountNumber: document.querySelector('input[placeholder="Nomor Rekening / E-wallet"]').value,
+            accountName: document.querySelector('input[placeholder="Nama Rekening / E-wallet"]').value,
+            balance: 0 // SALDO AWAL OTOMATIS NOL
+        };
+
+        // Simpan data user ke localStorage menggunakan username sebagai key
+        localStorage.setItem(username, JSON.stringify(userData));
+
+        alert('Pendaftaran berhasil! Anda akan otomatis login.');
+        login(username); // Langsung login setelah daftar
+    });
+    
     // 2. Login
     loginForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const username = document.getElementById('login-username').value;
-        alert('Login berhasil!');
-        login(username);
+        const password = document.getElementById('login-password').value;
+        const userData = JSON.parse(localStorage.getItem(username));
+
+        if (userData && userData.password === password) {
+            alert('Login berhasil!');
+            login(username);
+        } else {
+            alert('Username atau password salah!');
+        }
     });
 
     // 3. Logout
     logoutButton.addEventListener('click', () => {
-        loggedInUser = null;
-        localStorage.removeItem('simulatedUser');
+        localStorage.removeItem('currentUser');
         alert('Anda telah logout.');
         showPage('login-page');
     });
 
-    // 4. Link Pindah Halaman
-    gotoLoginLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        showPage('login-page');
-    });
-    gotoRegisterLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        showPage('register-page');
-    });
+    // 4. Pindah antara halaman Login & Daftar
+    gotoLoginLink.addEventListener('click', (e) => { e.preventDefault(); showPage('login-page'); });
+    gotoRegisterLink.addEventListener('click', (e) => { e.preventDefault(); showPage('register-page'); });
 
-    // 5. Navigasi di dalam Aplikasi (Tab Utama Bawah)
+    // 5. Navigasi Konten Aplikasi (Tombol Bawah)
     navButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const targetId = button.dataset.target;
-            showAppContent(targetId);
-        });
+        button.addEventListener('click', () => showAppContent(button.dataset.target));
     });
 
-    // 6. Simulasi Form Deposit & Penarikan
-    depositForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const amount = document.getElementById('deposit-amount').value;
-        alert(`Simulasi: Permintaan deposit sebesar ${amount} telah dikirim.`);
-        depositForm.reset();
-    });
-    withdrawForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const amount = document.getElementById('withdraw-amount').value;
-        alert(`Simulasi: Permintaan penarikan sebesar ${amount} telah dikirim.`);
-        withdrawForm.reset();
-    });
-
-    // --- FUNGSI BARU: Logika Sidebar ---
-    function toggleSidebar() {
+    // 6. Logika untuk Menu Samping (Sidebar)
+    const toggleSidebar = () => {
         sidebarMenu.classList.toggle('open');
         overlay.classList.toggle('active');
-    }
+    };
     menuToggle.addEventListener('click', toggleSidebar);
     overlay.addEventListener('click', toggleSidebar);
 
-    // --- FUNGSI BARU: Logika Tab Game (Populer/Terbaru) ---
-    gameTabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            // Hapus kelas aktif dari semua tab
-            gameTabs.forEach(t => t.classList.remove('active'));
-            // Tambahkan kelas aktif ke tab yang diklik
-            tab.classList.add('active');
-
-            const targetContentId = tab.dataset.tab;
-
-            // Sembunyikan semua konten tab
-            tabContents.forEach(content => {
-                content.classList.remove('active');
-            });
-
-            // Tampilkan konten yang sesuai
-            document.getElementById(targetContentId).classList.add('active');
+    // 7. LOGIKA BARU: Mengontrol pilihan Bank/E-wallet
+    accountTypeRadios.forEach(radio => {
+        radio.addEventListener('change', () => {
+            const isBank = radio.value === 'bank';
+            bankSelect.classList.toggle('active', isBank);
+            bankSelect.disabled = !isBank;
+            ewalletSelect.classList.toggle('active', !isBank);
+            ewalletSelect.disabled = isBank;
         });
     });
+    // Set keadaan awal saat halaman dimuat
+    document.querySelector('input[name="accountType"][value="bank"]').dispatchEvent(new Event('change'));
+
+
+    // --- Logika Halaman Awal ---
+    // Cek apakah ada user yang sedang login di session
+    const currentUser = localStorage.getItem('currentUser');
+    if (currentUser) {
+        login(currentUser);
+    } else {
+        // Jika tidak ada, tampilkan halaman pendaftaran
+        showPage('register-page');
+    }
 });
