@@ -89,3 +89,52 @@ button:hover { background-color: #fff; box-shadow: 0 0 10px var(--primary-color)
 .game-item { background-color: var(--light-bg); border-radius: 8px; overflow: hidden; cursor: pointer; transition: transform 0.2s; border: 1px solid #444; }
 .game-item:hover { transform: scale(1.05); }
 .game-item img { width: 100%; height: auto; display: block; }
+/* ================== GAYA BARU UNTUK DEPOSIT & PENARIKAN ================== */
+
+/* --- Form Deposit --- */
+.deposit-instructions {
+    background-color: var(--medium-bg);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid var(--primary-color);
+}
+.deposit-option {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: var(--light-bg);
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+.deposit-option i {
+    font-size: 24px;
+    color: var(--primary-color);
+}
+.deposit-option h4, .deposit-option p {
+    margin: 0;
+    padding: 2px 0;
+}
+
+/* --- Form Penarikan --- */
+.account-info-box {
+    background-color: var(--medium-bg);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 5px solid var(--primary-color);
+}
+.account-info-box h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+.account-info-box p {
+    margin: 8px 0;
+    font-size: 16px;
+    color: #ccc;
+}
+.account-info-box strong {
+    color: #fff;
+    font-weight: 600;
+}
