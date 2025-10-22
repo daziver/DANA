@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Neon</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="register-page" class="page active">
+        <div class="form-container">
+            <h2 class="neon-text">Daftar Akun</h2>
+            <form id="register-form">
+                <input type="text" id="reg-username" placeholder="Username" required>
+                <input type="password" id="reg-password" placeholder="Password" required>
+                <input type="tel" id="reg-phone" placeholder="Nomor HP" required>
+                <input type="tel" id="reg-whatsapp" placeholder="Nomor WhatsApp" required>
+                
+                <div class="bank-options-container">
+                    <h4>Pilih Rekening/E-Wallet</h4>
+                    <div class="bank-options-list">
+                        <label class="bank-option">
+                            <input type="radio" name="bank" value="BCA" required> BCA
+                        </label>
+                        <label class="bank-option">
+                            <input type="radio" name="bank" value="BANK SUMSEL"> BANK SUMSEL
+                        </label>
+                        <label class="bank-option">
+                            <input type="radio" name="bank" value="SUPERQRIS"> SUPERQRIS
+                        </label>
+                         <label class="bank-option">
+                            <input type="radio" name="bank" value="BRI"> BRI
+                        </label>
+                        <label class="bank-option">
+                            <input type="radio" name="bank" value="BNI"> BNI
+                        </label>
+                         <label class="bank-option">
+                            <input type="radio" name="bank" value="DANA"> DANA
+                        </label>
+                        <label class="bank-option">
+                            <input type="radio" name="bank" value="OVO"> OVO
+                        </label>
+                         <label class="bank-option">
+                            <input type="radio" name="bank" value="GOPAY"> GOPAY
+                        </label>
+                         <label class="bank-option">
+                            <input type="radio" name="bank" value="BANK MEGA"> BANK MEGA
+                        </label>
+                        </div>
+                </div>
+                
+                <input type="text" id="reg-account-number" placeholder="Nomor Rekening/E-Wallet" required>
+                <input type="text" id="reg-account-name" placeholder="Nama Sesuai Rekening/E-Wallet" required>
+                
+                <button type="submit">Daftar</button>
+            </form>
+            <p>Sudah punya akun? <a href="#" id="goto-login">Login di sini</a></p>
+        </div>
+    </div>
+
+    <div id="login-page" class="page">
+        <div class="form-container">
+            <h2 class="neon-text">Login</h2>
+            <form id="login-form">
+                <input type="text" id="login-username" placeholder="Username" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <p>Belum punya akun? <a href="#" id="goto-register">Daftar di sini</a></p>
+        </div>
+    </div>
+
+    <div id="app-page" class="page">
+        <header class="app-header">
+            <div class="header-left-group">
+                <span class="welcome-user">
+                    Selamat datang, <strong id="user-display"></strong>!
+                    <span class="balance-separator">|</span>
+                    Saldo: <strong id="balance-display">Rp 0</strong>
+                </span>
+                <div class="header-actions">
+                    <button class="header-nav-button" data-target="deposit-content">Deposit</button>
+                    <button class="header-nav-button" data-target="withdraw-content">Penarikan</button>
+                </div>
+            </div>
+            
+            <button id="logout-button">Logout</button>
+        </header>
+
+        <nav class="app-nav">
+            <button class="nav-button active" data-target="games-content">Games</button>
+            <button class="nav-button" data-target="deposit-content">Deposit</button>
+            <button class="nav-button" data-target="withdraw-content">Penarikan</button>
+        </nav>
+
+        <main class="app-content">
+            <div id="games-content" class="content-section active">
+                <div class="games-category">
+                    <h3>Hot</h3>
+                    <div class="games-grid">
+                        <div class="game-slot">
+                            <img src="https://i.ibb.co/L5hS0K2/mahjong-ways-2.png" alt="Mahjong Ways 2">
+                            <span class="game-slot-title">Mahjong Ways 2</span>
+                        </div>
+                        <div class="game-slot">
+                            <img src="https://i.ibb.co/3cq2pS7/mahjong-ways.png" alt="Mahjong Ways">
+                            <span class="game-slot-title">Mahjong Ways</span>
+                        </div>
+                        <div class="game-slot">
+                            <img src="https://i.ibb.co/R7qR5vT/wild-bounty-showdown.png" alt="Wild Bounty">
+                            <span class="game-slot-title">Wild Bounty</span>
+                        </div>
+                        <div class="game-slot">
+                            <img src="https://i.ibb.co/d52X33k/wild-bandito.png" alt="Wild Bandito">
+                            <span class="game-slot-title">Wild Bandito</span>
+                        </div>
+                        <div class="game-slot">
+                            <img src="https://i.ibb.co/k3t2tBd/mahjong-wins.png" alt="Mahjong Wins">
+                            <span class="game-slot-title">Mahjong Wins</span>
+                        </div>
+                         <div class="game-slot">
+                            <img src="https://i.ibb.co/7C9mYyZ/gates-of-olympus.png" alt="Gates of Olympus">
+                            <span class="game-slot-title">Gates of Olympus</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="games-category">
+                    <h3>Slots</h3>
+                     <div class="games-grid">
+                        <div class="game-slot">
+                            <img src="https://i.ibb.co/L5hS0K2/mahjong-ways-2.png" alt="Mahjong Ways 2">
+                            <span class="game-slot-title">Mahjong Ways 2</span>
+                        </div>
+                        <div class="game-slot">
+                            <img src="https://i.ibb.co/3cq2pS7/mahjong-ways.png" alt="Mahjong Ways">
+                            <span class="game-slot-title">Mahjong Ways</span>
+                        </div>
+                        <div class="game-slot">
+                            <img src="https://i.ibb.co/R7qR5vT/wild-bounty-showdown.png" alt="Wild Bounty">
+                            <span class="game-slot-title">Wild Bounty</span>
+                        </div>
+                        <div class="game-slot">
+                            <img src="https://i.ibb.co/d52X33k/wild-bandito.png" alt="Wild Bandito">
+                            <span class="game-slot-title">Wild Bandito</span>
+                        </div>
+                        <div class="game-slot">
+                            <img src="https://i.ibb.co/K21XzQd/treasures-of-aztec.png" alt="Treasures of Aztec">
+                            <span class="game-slot-title">Treasures of Aztec</span>
+                        </div>
+                         <div class="game-slot">
+                            <img src="https://i.ibb.co/c8N3jNq/lucky-neko.png" alt="Lucky Neko">
+                            <span class="game-slot-title">Lucky Neko</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="deposit-content" class="content-section">
+                <h3 class="neon-text">Form Deposit</h3>
+                <form id="deposit-form" class="sub-form">
+                    <div class="deposit-info">
+                        <h4>Rekening Tujuan Deposit:</h4>
+                        <p><strong>Bank:</strong> DANA</p>
+                        <p><strong>Nomor:</strong> 083827273737</p>
+                        <p><strong>Atas Nama:</strong> Hengki</p>
+                    </div>
+                    <label for="deposit-amount">Jumlah Deposit</label>
+                    <input type="number" id="deposit-amount" placeholder="min. 10.000" required>
+                    <button type="submit">Konfirmasi Deposit</button>
+                </form>
+            </div>
+
+            <div id="withdraw-content" class="content-section">
+                <h3 class="neon-text">Form Penarikan</h3>
+                <form id="withdraw-form" class="sub-form">
+                    <label for="withdraw-amount">Jumlah Penarikan</label>
+                    <input type="number" id="withdraw-amount" placeholder="min. 50.000" required>
+                    <div id="withdraw-account-info" class="deposit-info">
+                        <h4>Penarikan akan dikirim ke:</h4>
+                        <p><strong>Bank/E-Wallet:</strong> <span id="wd-bank"></span></p>
+                        <p><strong>Nomor Rekening:</strong> <span id="wd-account-number"></span></p>
+                        <p><strong>Atas Nama:</strong> <span id="wd-account-name"></span></p>
+                    </div>
+                    <button type="submit">Konfirmasi Penarikan</button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+                                                 </html>
