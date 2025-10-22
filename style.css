@@ -110,6 +110,17 @@ button:hover {
 .welcome-user strong {
     color: #00e6e6;
 }
+/* ... setelah .welcome-user strong ... */
+
+.welcome-user {
+    font-size: 1.1em; /* Sedikit memperbesar teks header */
+}
+
+/* Tambahan untuk pemisah saldo */
+.balance-separator {
+    margin: 0 10px; /* Jarak di kiri dan kanan pemisah */
+    color: #888;   /* Warna abu-abu agar tidak terlalu mencolok */
+}
 
 .header-actions {
     display: flex;
