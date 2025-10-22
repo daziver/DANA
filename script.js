@@ -38,7 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const depositBankName = document.getElementById('deposit-bank-name');
     const depositAccountNumber = document.getElementById('deposit-account-number');
     const depositAccountName = document.getElementById('deposit-account-name');
-    
+    const qrisImageContainer = document.getElementById('qris-image-container');
+
     // --- [BARU] Seleksi Elemen Modal Game ---
     const gameSlots = document.querySelectorAll('.game-slot');
     const gameModal = document.getElementById('game-modal');
@@ -99,21 +100,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Pilihan Deposit Dinamis (jika ada formnya)
-    if (depositMethodSelect) {
-        depositMethodSelect.addEventListener('change', () => {
-            const selectedMethod = depositMethodSelect.value;
-            if (selectedMethod && depositAccounts[selectedMethod]) {
-                const account = depositAccounts[selectedMethod];
-                depositBankName.textContent = account.bank;
-                depositAccountNumber.textContent = account.number;
-                depositAccountName.textContent = account.name;
-                depositInfoContainer.style.display = 'block';
-            } else {
-                depositInfoContainer.style.display = 'none';
-            }
-        });
-    }
+    // KODE LAMA (Hapus atau ganti ini)
+// Pilihan Deposit Dinamis (jika ada formnya)
+if (depositMethodSelect) {
+    depositMethodSelect.addEventListener('change', () => {
+        const selectedMethod = depositMethodSelect.value;
+        if (selectedMethod && depositAccounts[selectedMethod]) {
+            const account = depositAccounts[selectedMethod];
+            depositBankName.textContent = account.bank;
+            depositAccountNumber.textContent = account.number;
+            depositAccountName.textContent = account.name;
+            depositInfoContainer.style.display = 'block';
+        } else {
+            depositInfoContainer.style.display = 'none';
+        }
+    });
+}
 
     // Pendaftaran
     registerForm.addEventListener('submit', (e) => {
