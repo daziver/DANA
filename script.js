@@ -38,6 +38,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const depositBankName = document.getElementById('deposit-bank-name');
     const depositAccountNumber = document.getElementById('deposit-account-number');
     const depositAccountName = document.getElementById('deposit-account-name');
+    
+    // --- [BARU] Seleksi Elemen Modal Game ---
+    const gameSlots = document.querySelectorAll('.game-slot');
+    const gameModal = document.getElementById('game-modal');
+    const closeModalButton = document.querySelector('.close-button');
+
 
     // --- Data Rekening Tujuan Deposit ---
     const depositAccounts = {
@@ -59,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('currentUser', JSON.stringify(userData));
         userDisplay.textContent = userData.username;
         balanceDisplay.textContent = 'Rp 0';
-        if (wdBank) { // Memastikan elemen ada sebelum diisi
+        if (wdBank) {
             wdBank.textContent = userData.bank;
             wdAccountNumber.textContent = userData.accountNumber;
             wdAccountName.textContent = userData.accountName;
@@ -180,4 +186,23 @@ document.addEventListener('DOMContentLoaded', () => {
             withdrawForm.reset();
         });
     }
+    
+    // Interaksi Game Slot
+    gameSlots.forEach(slot => {
+        slot.addEventListener('click', () => {
+            gameModal.style.display = 'block';
+        });
+    });
+
+    function closeModal() {
+        gameModal.style.display = 'none';
+    }
+
+    closeModalButton.addEventListener('click', closeModal);
+
+    window.addEventListener('click', (event) => {
+        if (event.target == gameModal) {
+            closeModal();
+        }
+    });
 });
