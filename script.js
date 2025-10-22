@@ -123,27 +123,27 @@ document.addEventListener('DOMContentLoaded', () => {
     menuToggle.addEventListener('click', toggleSidebar);
     overlay.addEventListener('click', toggleSidebar);
 
-    // 7. LOGIKA BARU: Mengontrol pilihan Bank/E-wallet
+    // 7. LOGIKA: Mengontrol pilihan Bank/E-wallet
     accountTypeRadios.forEach(radio => {
-        radio.addEventListener('change', () => {
-            const isBank = radio.value === 'bank';
+        radio.addEventListener('change', (event) => {
+            const selectedValue = event.target.value;
+            const isBank = selectedValue === 'bank';
+
             bankSelect.classList.toggle('active', isBank);
             bankSelect.disabled = !isBank;
+
             ewalletSelect.classList.toggle('active', !isBank);
             ewalletSelect.disabled = isBank;
         });
     });
-    // Set keadaan awal saat halaman dimuat
+    // Set keadaan awal saat halaman dimuat, panggil 'change' secara manual
     document.querySelector('input[name="accountType"][value="bank"]').dispatchEvent(new Event('change'));
 
-
     // --- Logika Halaman Awal ---
-    // Cek apakah ada user yang sedang login di session
     const currentUser = localStorage.getItem('currentUser');
     if (currentUser) {
         login(currentUser);
     } else {
-        // Jika tidak ada, tampilkan halaman pendaftaran
         showPage('register-page');
     }
 });
