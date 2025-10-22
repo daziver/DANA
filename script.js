@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const wdAccountNumber = document.getElementById('wd-account-number');
     const wdAccountName = document.getElementById('wd-account-name');
 
-    // --- [BARU] Seleksi Elemen Menu & Deposit ---
+    // --- Seleksi Elemen Menu & Deposit ---
     const menuToggleButton = document.getElementById('menu-toggle-button');
     const dropdownMenu = document.getElementById('dropdown-menu');
     const depositMethodSelect = document.getElementById('deposit-method');
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const depositAccountNumber = document.getElementById('deposit-account-number');
     const depositAccountName = document.getElementById('deposit-account-name');
 
-    // --- [BARU] Data Rekening Tujuan Deposit ---
+    // --- Data Rekening Tujuan Deposit ---
     const depositAccounts = {
         'dana': { bank: 'DANA', number: '083827273737', name: 'Hengki' },
         'gopay': { bank: 'GOPAY', number: '081234567890', name: 'Hengki P.' },
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (loggedInUser) {
         login(loggedInUser);
     } else {
-        showPage('login-page'); // Default ke login jika tidak ada sesi
+        showPage('login-page');
         const lastUsername = localStorage.getItem('lastUsername');
         if (lastUsername) {
             loginUsernameInput.value = lastUsername;
@@ -80,20 +80,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Event Listener ---
 
-    // 1. [BARU] Menu Tiga Titik
+    // Menu Tiga Titik
     menuToggleButton.addEventListener('click', (e) => {
-        e.stopPropagation(); // Mencegah klik menyebar ke window
+        e.stopPropagation();
         dropdownMenu.classList.toggle('show');
     });
-
-    // Menutup menu jika klik di luar
     window.addEventListener('click', () => {
         if (dropdownMenu.classList.contains('show')) {
             dropdownMenu.classList.remove('show');
         }
     });
 
-    // 2. [BARU] Pilihan Deposit Dinamis
+    // Pilihan Deposit Dinamis
     depositMethodSelect.addEventListener('change', () => {
         const selectedMethod = depositMethodSelect.value;
         if (selectedMethod && depositAccounts[selectedMethod]) {
@@ -107,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 3. Pendaftaran
+    // Pendaftaran
     registerForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const selectedBank = document.querySelector('input[name="bank"]:checked');
@@ -129,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
         login(newUser);
     });
 
-    // 4. Login
+    // Login
     loginForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const username = loginUsernameInput.value;
@@ -142,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 5. Logout
+    // Logout
     logoutButton.addEventListener('click', () => {
         const currentUser = JSON.parse(localStorage.getItem('currentUser'));
         if(currentUser) {
@@ -154,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
         showPage('login-page');
     });
 
-    // Link Navigasi lainnya...
+    // Link Navigasi
     gotoLoginLink.addEventListener('click', (e) => { e.preventDefault(); showPage('login-page'); });
     gotoRegisterLink.addEventListener('click', (e) => { e.preventDefault(); showPage('register-page'); });
     navButtons.forEach(button => button.addEventListener('click', () => showAppContent(button.dataset.target)));
@@ -167,7 +165,6 @@ document.addEventListener('DOMContentLoaded', () => {
         depositForm.reset();
         depositInfoContainer.style.display = 'none';
     });
-
     withdrawForm.addEventListener('submit', (e) => {
         e.preventDefault();
         alert(`Simulasi: Permintaan penarikan telah dikirim.`);
