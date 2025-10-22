@@ -87,21 +87,23 @@
     </div>
 
             <div class="header-center">
-                <span class="welcome-user">
-                    Selamat datang, <strong id="user-display"></strong>!
-                    <span class="balance-separator">|</span>
-                    Saldo: <strong id="balance-display">Rp 0</strong>
-                </span>
-                <div class="header-actions">
-                    <button class="header-nav-button" data-target="deposit-content">Deposit</button>
-                    <button class="header-nav-button" data-target="withdraw-content">Penarikan</button>
-                </div>
-            </div>
+                <header class="app-header">
+    <div class="header-left">
+        <button id="menu-toggle-button" class="menu-button">☰</button>
+        </div>
 
-            <div class="header-right">
-                <button id="logout-button">Logout</button>
-            </div>
-        </header>
+    <div class="user-panel">
+        <div class="user-info">
+            <span class="welcome-text">Selamat datang, <strong id="user-display"></strong></span>
+            <span class="balance-info">Saldo: <strong id="balance-display">Rp 0</strong></span>
+        </div>
+        <div class="header-actions">
+            <button class="header-nav-button" data-target="deposit-content">Deposit</button>
+            <button class="header-nav-button" data-target="withdraw-content">Penarikan</button>
+            <button id="logout-button">Logout</button>
+        </div>
+    </div>
+    </header>
 
         <nav class="app-nav">
             <button class="nav-button active" data-target="games-content">Games</button>
