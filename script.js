@@ -1,96 +1,115 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- Seleksi Elemen Global ---
     const pages = document.querySelectorAll('.page');
+    const contentSections = document.querySelectorAll('.content-section');
+    
+    // --- Tombol & Link Utama ---
+    const gotoLoginLink = document.getElementById('goto-login');
+    const gotoRegisterLink = document.getElementById('goto-register');
+    const logoutButton = document.getElementById('logout-button');
+    const menuToggle = document.getElementById('menu-toggle'); // Tombol menu hamburger
+    const navButtons = document.querySelectorAll('.nav-button'); // Tombol navigasi bawah
+
+    // --- Form ---
     const registerForm = document.getElementById('register-form');
     const loginForm = document.getElementById('login-form');
-    const navButtons = document.querySelectorAll('.nav-button');
-    const contentSections = document.querySelectorAll('.content-section');
-
-    // --- Seleksi Elemen Penarikan BARU ---
-    const wdBankName = document.getElementById('wd-bank-name');
-    const wdAccountNumber = document.getElementById('wd-account-number');
-    const wdAccountName = document.getElementById('wd-account-name');
     
+    // --- Tampilan Aplikasi & Sidebar ---
+    const balanceDisplay = document.getElementById('balance-display');
+    const sidebarMenu = document.getElementById('sidebar-menu');
+    const overlay = document.getElementById('overlay');
+
     // --- Fungsi Bantuan ---
     const showPage = (pageId) => {
         pages.forEach(page => page.classList.toggle('active', page.id === pageId));
     };
 
-    // --- FUNGSI BARU: Mengisi Info Penarikan ---
-    const populateWithdrawalInfo = () => {
-        const currentUser = localStorage.getItem('currentUser');
-        if (!currentUser) return; // Keluar jika tidak ada user login
-
-        const userData = JSON.parse(localStorage.getItem(currentUser));
-        if (!userData) return; // Keluar jika data user tidak ditemukan
-
-        // Mengisi elemen HTML dengan data yang tersimpan
-        if(wdBankName) wdBankName.textContent = userData.bankOrEwallet.toUpperCase();
-        if(wdAccountNumber) wdAccountNumber.textContent = userData.accountNumber;
-        if(wdAccountName) wdAccountName.textContent = userData.accountName;
-    };
-    
     const showAppContent = (contentId) => {
         contentSections.forEach(section => section.classList.toggle('active', section.id === contentId));
         navButtons.forEach(button => button.classList.toggle('active', button.dataset.target === contentId));
         
-        // **LOGIKA BARU DITAMBAHKAN DI SINI**
-        // Jika tab penarikan yang dibuka, panggil fungsi untuk mengisi data
         if (contentId === 'withdraw-content') {
-            populateWithdrawalInfo();
+            // Jika ada fungsi untuk mengisi info penarikan, panggil di sini
+            // populateWithdrawalInfo();
         }
     };
-
+    
     const login = (username) => {
         localStorage.setItem('currentUser', username);
         const userData = JSON.parse(localStorage.getItem(username));
-        
-        const balanceDisplay = document.getElementById('balance-display');
-        balanceDisplay.textContent = `Rp ${userData ? userData.balance : 0}`;
-
+        if(balanceDisplay) {
+            balanceDisplay.textContent = `Rp ${userData ? userData.balance : 0}`;
+        }
         showPage('app-page');
-        showAppContent('games-content'); // Default ke halaman game
+        showAppContent('games-content');
     };
 
-    // --- EVENT LISTENER ---
-    if(registerForm) {
-        registerForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const username = document.getElementById('reg-username').value;
+    // --- EVENT LISTENERS (BAGIAN PENTING) ---
 
-            if (localStorage.getItem(username)) {
-                alert('Username sudah terdaftar.');
-                return;
-            }
-            
-            const selectedAccountType = document.querySelector('input[name="accountType"]:checked').value;
-            
-            // Mengambil data dari form pendaftaran
-            const userData = {
-                username: username,
-                password: document.getElementById('reg-password').value,
-                accountType: selectedAccountType,
-                bankOrEwallet: selectedAccountType === 'bank' ? document.getElementById('bank-select').value : document.getElementById('ewallet-select').value,
-                accountNumber: document.getElementById('reg-account-number').value,
-                accountName: document.getElementById('reg-account-name').value,
-                balance: 0 
-            };
+    // 1. Tombol Menu Pojok Kiri Atas (Sidebar)
+    const toggleSidebar = () => {
+        if (sidebarMenu && overlay) {
+            sidebarMenu.classList.toggle('open');
+            overlay.classList.toggle('active');
+        }
+    };
+    if (menuToggle) menuToggle.addEventListener('click', toggleSidebar);
+    if (overlay) overlay.addEventListener('click', toggleSidebar);
 
-            localStorage.setItem(username, JSON.stringify(userData));
-            alert('Pendaftaran berhasil! Anda akan otomatis login.');
-            login(username);
+    // 2. Tombol Navigasi Bawah
+    navButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetId = button.dataset.target;
+            showAppContent(targetId);
+        });
+    });
+
+    // 3. Tombol Logout
+    if (logoutButton) {
+        logoutButton.addEventListener('click', () => {
+            localStorage.removeItem('currentUser');
+            alert('Anda telah logout.');
+            showPage('login-page');
         });
     }
 
-    if(loginForm) {
-        // ... Logika login tetap sama ...
-    }
-    
-    navButtons.forEach(button => {
-        button.addEventListener('click', () => showAppContent(button.dataset.target));
-    });
+    // 4. Link Pindah Daftar/Login
+    if (gotoLoginLink) gotoLoginLink.addEventListener('click', (e) => { e.preventDefault(); showPage('login-page'); });
+    if (gotoRegisterLink) gotoRegisterLink.addEventListener('click', (e) => { e.preventDefault(); showPage('register-page'); });
 
-    // ... sisa event listener (logout, sidebar, dll) tetap sama ...
+    // 5. Form Pendaftaran & Login
+    if (registerForm) {
+        registerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('reg-username').value;
+            if (localStorage.getItem(username)) {
+                alert('Username sudah ada.');
+                return;
+            }
+            const userData = { /* ... data user ... */ balance: 0 };
+            localStorage.setItem(username, JSON.stringify(userData));
+            alert('Pendaftaran berhasil!');
+            login(username);
+        });
+    }
+    // ... (sisa logika form) ...
+    
+    // --- Logika Pilihan Bank/E-wallet di Form Pendaftaran ---
+    const accountTypeRadios = document.querySelectorAll('input[name="accountType"]');
+    const bankSelect = document.getElementById('bank-select');
+    const ewalletSelect = document.getElementById('ewallet-select');
+
+    const handleAccountTypeChange = (event) => {
+        if (!bankSelect || !ewalletSelect) return;
+        const isBank = event.target.value === 'bank';
+        bankSelect.classList.toggle('active', isBank);
+        bankSelect.disabled = !isBank;
+        ewalletSelect.classList.toggle('active', !isBank);
+        ewalletSelect.disabled = isBank;
+    };
+    accountTypeRadios.forEach(radio => radio.addEventListener('change', handleAccountTypeChange));
+    const initialRadio = document.querySelector('input[name="accountType"]:checked');
+    if (initialRadio) handleAccountTypeChange({ target: initialRadio });
 
     // --- Logika Halaman Awal ---
     const currentUser = localStorage.getItem('currentUser');
@@ -99,24 +118,4 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         showPage('register-page');
     }
-    
-    // Inisialisasi logika radio button bank/ewallet
-    const accountTypeRadios = document.querySelectorAll('input[name="accountType"]');
-    const bankSelect = document.getElementById('bank-select');
-    const ewalletSelect = document.getElementById('ewallet-select');
-    
-    const handleAccountTypeChange = (event) => {
-        const isBank = event.target.value === 'bank';
-        bankSelect.classList.toggle('active', isBank);
-        bankSelect.disabled = !isBank;
-        ewalletSelect.classList.toggle('active', !isBank);
-        ewalletSelect.disabled = isBank;
-    };
-    
-    accountTypeRadios.forEach(radio => radio.addEventListener('change', handleAccountTypeChange));
-    
-    // Inisialisasi keadaan awal
-    const initialRadio = document.querySelector('input[name="accountType"]:checked');
-    if(initialRadio) handleAccountTypeChange({ target: initialRadio });
-
 });
