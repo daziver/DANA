@@ -159,12 +159,12 @@ document.addEventListener('DOMContentLoaded', () => {
     headerNavButtons.forEach(button => button.addEventListener('click', () => showAppContent(button.dataset.target)));
 
     // Form Deposit & Penarikan
-    depositForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert(`Simulasi: Permintaan deposit telah dikirim.`);
-        depositForm.reset();
-        depositInfoContainer.style.display = 'none';
-    });
+depositForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('Deposit telah di proses'); // <-- UBAH TEKS DI SINI
+    depositForm.reset();
+    depositInfoContainer.style.display = 'none';
+});
     withdrawForm.addEventListener('submit', (e) => {
         e.preventDefault();
         alert(`Simulasi: Permintaan penarikan telah dikirim.`);
