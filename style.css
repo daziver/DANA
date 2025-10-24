@@ -240,14 +240,4 @@ button:hover { background-color: #fff; box-shadow: 0 0 10px #00e6e6; }
     border-top: 2px solid #00e6e6; 
     box-shadow: 0 -5px 15px -5px #00e6e633; 
 }
-.footer-content { max-width: 450px; margin: 0 auto; }
-.footer-logo { max-width: 120px; margin-bottom: 15px; }
-.footer-disclaimer { font-size: 0.9em; line-height: 1.6; margin-bottom: 25px; }
-.social-section { margin-bottom: 30px; }
-.social-section p { font-size: 1.1em; font-weight: 600; margin-bottom: 15px; color: #e0e0e0; }
-.social-icons-wrapper { display: flex; justify-content: center; gap: 20px; }
-.social-icons-wrapper a { display: block; }
-.social-icons-wrapper img { width: 48px; height: 48px; transition: transform 0.2s, opacity 0.2s; opacity: 0.8; }
-.social-icons-wrapper img:hover { transform: scale(1.1); opacity: 1; }
-.licensing-logos { display: flex; justify-content: center; align-items: center; gap: 25px; flex-wrap: wrap; border-top: 1px solid #333; padding-top: 25px; }
-.licensing-logos img { max-height: 35px; width: auto; filter: grayscale(1) brightness(1.5); opacity: 0.7; }
+
